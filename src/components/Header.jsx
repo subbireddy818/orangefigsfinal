@@ -14,6 +14,8 @@ export const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const closeMenu = () => setIsMobileMenuOpen(false);
+
     const scrollToSection = (e, sectionId) => {
         e.preventDefault();
         setIsMobileMenuOpen(false);
