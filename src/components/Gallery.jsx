@@ -87,7 +87,7 @@ export const Gallery = () => {
                             >
                                 {({ isActive }) => (
                                     <div
-                                        className="mx-auto rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)] cursor-pointer w-full h-[360px] md:h-[381.4px] transition-transform duration-900 ease-[cubic-bezier(0.25,1,0.5,1)]"
+                                        className="mx-auto rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)] cursor-pointer w-full h-[360px] md:h-[381.4px] transition-transform duration-700 ease-out"
                                         style={{
                                             willChange: 'transform, opacity',
                                             transform: isActive ? 'scale(1)' : 'scale(0.85)',

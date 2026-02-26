@@ -3,26 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Andes';
-    src: url('./assets/fonts/Andes.ttf') format('truetype');
+    font-family: 'AndesRounded';
+    src: url('./assets/fonts/fonnts.com-AndesRoundedRegular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
-@font-face {
-    font-family: 'Andes';
-    src: url('./assets/fonts/Andes.ttf') format('truetype');
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Utility class to apply a rounder display font where we want it.
-   For now this just reuses Andes + system fonts so the app builds
-   even if no separate Andes Rounded files are present. */
+/* Utility class to apply Andes Rounded font */
 .font-andes-rounded {
-    font-family: 'Andes', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'AndesRounded', system-ui, sans-serif;
 }
 
 @layer base {
@@ -97,7 +87,7 @@
 
     body {
         @apply bg-background text-foreground;
-        font-family: 'Andes', sans-serif;
+        font-family: 'AndesRounded', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
@@ -109,9 +99,8 @@
     h4,
     h5,
     h6 {
-        font-family: 'Andes', sans-serif;
-        font-weight: 800;
-        /* Extra Bold */
+        font-family: 'AndesRounded', sans-serif;
+        font-weight: 400;
         letter-spacing: -0.02em;
     }
 }
