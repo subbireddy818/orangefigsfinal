@@ -4,9 +4,8 @@ import {
     Phone,
     MapPin,
     Instagram,
-    Facebook,
     Youtube,
-    Twitter,
+    Linkedin,
 } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { motion } from "framer-motion";
@@ -41,10 +40,9 @@ export const Footer = () => {
     ];
 
     const socialLinks = [
-        { icon: Instagram, href: "https://instagram.com/orangefigs" },
-        { icon: Facebook, href: "https://facebook.com/orangefigs" },
-        { icon: Youtube, href: "https://youtube.com/orangefigs" },
-        { icon: Twitter, href: "https://twitter.com/orangefigs" },
+        { icon: Instagram, href: "https://www.instagram.com/orangefigsofficial/?hl=en", label: "Instagram" },
+        { icon: Youtube, href: "https://www.youtube.com/@orangefigsofficial8345/featured", label: "YouTube" },
+        { icon: Linkedin, href: "https://www.linkedin.com/company/orange-figs/posts/?feedView=all", label: "LinkedIn" },
     ];
 
     return (
@@ -84,6 +82,9 @@ export const Footer = () => {
                                 <motion.a
                                     key={i}
                                     href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={social.label}
                                     whileHover={{ y: -3, scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     className="w-9 h-9 rounded-lg border border-orange-100 bg-white shadow-sm flex items-center justify-center text-gray-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all duration-300"
