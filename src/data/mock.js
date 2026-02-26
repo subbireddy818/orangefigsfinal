@@ -133,9 +133,9 @@ export const galleryImages = [
 ];
 
 export const contactInfo = {
-    email: 'hello@orangefigs.com',
-    phone: '+1 (555) 000-0000',
-    address: '123 Culinary Lane, Foodie Town, FT 54321',
+    email: 'hello@theculinarylounge.com',
+    phone: '+91 90000 10770',
+    address: 'Plot 15, Bharani Layout, Narne Road, Jublee Hills, Hyderabad, Telangana 500092',
     hours: 'Mon-Sat: 9am - 6pm'
 };
 
