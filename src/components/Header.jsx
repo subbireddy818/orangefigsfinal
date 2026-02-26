@@ -14,13 +14,7 @@ export const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            setIsMobileMenuOpen(false);
-        }
-    };
+    const closeMenu = () => setIsMobileMenuOpen(false);
 
     const navItems = [
         { label: 'Programs', id: 'classes' },
@@ -65,9 +59,10 @@ export const Header = () => {
                     {/* Desktop Nav */}
                     <div className="hidden lg:flex items-center gap-2">
                         {navItems.map((item) => (
-                            <motion.button
+                            <motion.a
                                 key={item.label}
-                                onClick={() => scrollToSection(item.id)}
+                                href={`#${item.id}`}
+                                onClick={closeMenu}
                                 whileHover={{ y: -1 }}
                                 className="relative px-5 py-2 text-[13px] font-extrabold text-gray-600 hover:text-orange-600 transition-all duration-300 group"
                             >
@@ -78,7 +73,7 @@ export const Header = () => {
                                     whileHover={{ scaleX: 1 }}
                                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                 />
-                            </motion.button>
+                            </motion.a>
                         ))}
                     </div>
 
@@ -86,11 +81,13 @@ export const Header = () => {
                     <div className="hidden lg:flex items-center gap-3">
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Button
-                                onClick={() => scrollToSection('contact')}
+                                asChild
                                 className="h-11 px-8 rounded-full bg-gray-900 hover:bg-orange-600 text-white font-extrabold text-sm shadow-premium hover:shadow-orange-500/25 transition-all duration-500 border-0 overflow-hidden group relative"
                             >
-                                <span className="relative z-10">Get Started Free</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <a href="#contact">
+                                    <span className="relative z-10">Get Started Free</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                </a>
                             </Button>
                         </motion.div>
                     </div>
@@ -116,22 +113,24 @@ export const Header = () => {
                         >
                             <div className="px-6 py-6 flex flex-col gap-2">
                                 {navItems.map((item, i) => (
-                                    <motion.button
+                                    <motion.a
                                         key={item.label}
+                                        href={`#${item.id}`}
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 0.05 * i }}
-                                        onClick={() => scrollToSection(item.id)}
-                                        className="text-left text-lg font-extrabold text-gray-900 py-3 px-4 rounded-2xl hover:bg-orange-50 transition-colors"
+                                        onClick={closeMenu}
+                                        className="text-left text-lg font-extrabold text-gray-900 py-3 px-4 rounded-2xl hover:bg-orange-50 transition-colors block"
                                     >
                                         {item.label}
-                                    </motion.button>
+                                    </motion.a>
                                 ))}
                                 <Button
-                                    onClick={() => scrollToSection('contact')}
+                                    asChild
+                                    onClick={closeMenu}
                                     className="mt-2 h-14 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-extrabold text-base"
                                 >
-                                    Get Started Free
+                                    <a href="#contact">Get Started Free</a>
                                 </Button>
                             </div>
                         </motion.div>
