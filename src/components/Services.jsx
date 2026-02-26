@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ChefHat, Cake, Utensils, Star, Check } from 'lucide-react';
+import { ChefHat, Cake, Utensils, Star, Check } from 'lucide-react';
 
 const services = [
     {
@@ -85,9 +85,6 @@ export const Services = () => {
         );
     };
 
-    const scrollToContact = () => {
-        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-    };
     return (
         <section id="classes" className="bg-white py-14 lg:py-20 font-andes-rounded">
             <div className="container-custom">
