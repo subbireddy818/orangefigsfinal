@@ -14,7 +14,21 @@ export const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const closeMenu = () => setIsMobileMenuOpen(false);
+    const scrollToSection = (e, sectionId) => {
+        e.preventDefault();
+        setIsMobileMenuOpen(false);
+
+        // Wait for the mobile menu's exit animation to finish before scrolling
+        // This prevents the browser from cancelling the scroll due to layour shifts
+        setTimeout(() => {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                // Update URL without jumping
+                window.history.pushState(null, '', `#${sectionId}`);
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 300);
+    };
 
     const navItems = [
         { label: 'Programs', id: 'classes' },
@@ -119,7 +133,7 @@ export const Header = () => {
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 0.05 * i }}
-                                        onClick={closeMenu}
+                                        onClick={(e) => scrollToSection(e, item.id)}
                                         className="text-left text-lg font-extrabold text-gray-900 py-3 px-4 rounded-2xl hover:bg-orange-50 transition-colors block"
                                     >
                                         {item.label}
@@ -127,7 +141,7 @@ export const Header = () => {
                                 ))}
                                 <Button
                                     asChild
-                                    onClick={closeMenu}
+                                    onClick={(e) => scrollToSection(e, 'contact')}
                                     className="mt-2 h-14 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-extrabold text-base"
                                 >
                                     <a href="#contact">Get Started Free</a>
