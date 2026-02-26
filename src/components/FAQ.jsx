@@ -5,45 +5,56 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 const faqData = [
     {
         id: 1,
-        question: 'What age groups are your kits designed for?',
-        answer: 'Our kits cater to children aged 4–17. We have three tiers: Little Chefs (4–6), Junior Culinary Arts (7–12), and Teen Masterclass (13–17). Each tier is thoughtfully designed with age-appropriate recipes, tools, and skill levels.',
+        question: 'What age group is Orange Figs suitable for?',
+        answer: 'Our programmes are designed for children aged 6 to 16 years, with sessions tailored to different age groups and skill levels.',
     },
     {
         id: 2,
-        question: 'What comes in each monthly box?',
-        answer: 'Every box includes pre-measured dry ingredients, step-by-step illustrated recipe cards, a fun kitchen tool or accessory, educational cooking facts, and access to our online video tutorial for that month\'s recipe.',
+        question: 'Do children need prior cooking experience?',
+        answer: 'Not at all. We welcome beginners and experienced young cooks alike. Our curriculum adapts to each child\'s learning stage.',
     },
     {
         id: 3,
-        question: 'Are the recipes allergy-friendly?',
-        answer: 'We offer nut-free, gluten-free, and dairy-free alternatives for most of our recipes. During sign-up, you can specify any allergies or dietary restrictions, and we\'ll tailor your kit accordingly.',
+        question: 'Is safety ensured in the kitchen?',
+        answer: 'Absolutely. All sessions are supervised by trained chefs. We maintain strict safety, hygiene and equipment guidelines appropriate for children.',
     },
     {
         id: 4,
-        question: 'Can I cancel or pause my subscription?',
-        answer: 'Absolutely! You can pause or cancel your subscription at any time from your account dashboard. Monthly subscribers can cancel before the next billing date. Prepaid plans are non-refundable but can be paused.',
+        question: 'What is the batch size?',
+        answer: 'We keep batches small to ensure individual attention, structured learning and a premium experience.',
     },
     {
         id: 5,
-        question: 'Do you ship internationally?',
-        answer: 'Currently, we ship within the United States, Canada, and the United Kingdom. We\'re expanding to more countries soon! Sign up for our newsletter to stay updated on new shipping destinations.',
+        question: 'What does a typical session include?',
+        answer: 'Hands-on cooking, ingredient awareness, technique-building, plating, tasting and reflection — along with teamwork and discipline.',
     },
     {
         id: 6,
-        question: 'Is adult supervision required?',
-        answer: 'For Little Chefs (ages 4–6), adult supervision is required throughout. For Junior Culinary Arts (7–12), we recommend adult supervision especially when using the oven or stove. Teen Masterclass participants can work more independently.',
+        question: 'Are ingredients and equipment provided?',
+        answer: 'Yes. All ingredients, tools and chef aprons are provided by us.',
     },
     {
         id: 7,
-        question: 'Can I gift a subscription?',
-        answer: 'Yes! Gift subscriptions are one of our most popular options. You can purchase 1, 3, 6, or 12-month gift plans. We\'ll include a personalized gift card and can ship directly to the recipient.',
+        question: 'Do you accommodate dietary restrictions?',
+        answer: 'Yes. Please inform us in advance about allergies or dietary preferences, and we will do our best to accommodate them.',
     },
     {
         id: 8,
-        question: 'What makes Orange Figs different from other cooking kits?',
-        answer: 'Orange Figs was developed by Michelin-experienced chefs and child development experts. Our curriculum focuses not just on cooking, but on building confidence, nutritional literacy, and creativity. Plus, every kit includes premium, ethically-sourced ingredients.',
+        question: 'How is Summer Camp different from the Cooking Club?',
+        answer: 'Summer Camp is an intensive, structured multi-day experience with restaurant exposure. The Cooking Club is a weekend-based, ongoing skill-building programme.',
+    },
+    {
+        id: 9,
+        question: 'Can parents stay during sessions?',
+        answer: 'We encourage independent learning. However, parents are invited for showcase days and special events.',
+    },
+    {
+        id: 10,
+        question: 'How do I register?',
+        answer: 'You can register through the website form or contact us directly via phone or WhatsApp.',
     },
 ];
+
 
 const FAQItem = ({ item, isOpen, onClick }) => {
     return (
