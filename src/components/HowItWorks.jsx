@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ClipboardList, Package, ChefHat, PartyPopper } from 'lucide-react';
 
@@ -34,28 +34,57 @@ const steps = [
 ];
 
 export const HowItWorks = () => {
+    const [visible, setVisible] = useState(false);
+    
+    useEffect(() => {
+        setTimeout(() => setVisible(true), 100);
+    }, []);
+
     return (
         <section id="how-it-works" className="pt-14 lg:pt-20 pb-8 lg:pb-12 bg-[#FFFBF5] overflow-hidden">
+            <style>{`
+                .hiw-heading {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: clamp(32px, 6vw, 50px);
+                    font-weight: 800;
+                    line-height: 1.05;
+                    letter-spacing: -0.03em;
+                    color: #1a1020;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
+                    margin-bottom: 16px;
+                }
+                .hiw-heading.on { opacity: 1; transform: translateY(0); }
+
+                .hiw-heading .grad {
+                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
+
+                .hiw-label {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: 14px;
+                    font-weight: 700;
+                    letter-spacing: 0.18em;
+                    text-transform: uppercase;
+                    color: #FF6B1A;
+                    opacity: 0;
+                    transform: translateY(12px);
+                    transition: all 0.6s ease 0.35s;
+                }
+                .hiw-label.on { opacity: 1; transform: translateY(0); }
+            `}</style>
+
             <div className="container-custom">
                 {/* Header */}
-                <div className="text-center max-w-2xl mx-auto mb-8 space-y-4">
-                    <motion.span
-                        initial={{ opacity: 0, y: -10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-200/50"
-                    >
-                        How It Works
-                    </motion.span>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight"
-                    >
-                        Four Simple <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">Steps</span>
-                    </motion.h2>
+                <div className="text-center max-w-2xl mx-auto mb-10">
+                    <h2 className={`hiw-heading ${visible ? "on" : ""}`}>
+                        How It <span className="grad">Works</span>
+                    </h2>
+                    <p className={`hiw-label ${visible ? "on" : ""}`}>Four Simple Steps</p>
                 </div>
 
                 {/* Timeline — vertical on mobile, horizontal on desktop */}

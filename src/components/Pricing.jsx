@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Sparkles, ArrowRight } from 'lucide-react';
 
@@ -54,41 +54,62 @@ const plans = [
 ];
 
 export const Pricing = () => {
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => setVisible(true), 100);
+    }, []);
+
     const scrollToContact = () => {
         document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
         <section id="pricing" className="pt-14 lg:pt-20 pb-8 lg:pb-12 bg-white overflow-hidden relative">
+            <style>{`
+                .pricing-heading {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: clamp(28px, 5vw, 46px);
+                    font-weight: 800;
+                    line-height: 1.1;
+                    letter-spacing: -0.03em;
+                    color: #1a1020;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
+                    margin-bottom: 16px;
+                }
+                .pricing-heading.on { opacity: 1; transform: translateY(0); }
+                .pricing-heading .grad {
+                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
+                .pricing-label {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: 14px;
+                    font-weight: 700;
+                    letter-spacing: 0.18em;
+                    text-transform: uppercase;
+                    color: #FF6B1A;
+                    opacity: 0;
+                    transform: translateY(12px);
+                    transition: all 0.6s ease 0.35s;
+                }
+                .pricing-label.on { opacity: 1; transform: translateY(0); }
+            `}</style>
+
             <div className="container-custom relative z-10">
                 {/* Header */}
-                <div className="text-center max-w-2xl mx-auto mb-8 space-y-4">
-                    <motion.span
-                        initial={{ opacity: 0, y: -10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-200/50"
-                    >
-                        Pricing
-                    </motion.span>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight"
-                    >
-                        Simple, Honest <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">Pricing</span>
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-base text-gray-500 leading-relaxed"
-                    >
+                <div className="text-center max-w-2xl mx-auto mb-10">
+                    <h2 className={`pricing-heading ${visible ? "on" : ""}`}>
+                        Simple, Honest <span className="grad">Pricing</span>
+                    </h2>
+                    <p className={`pricing-label ${visible ? "on" : ""}`}>Choose Your Plan</p>
+                    <p className="text-base text-gray-500 leading-relaxed mt-4" style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.6s ease 0.5s' }}>
                         All plans include free shipping and a 100% satisfaction guarantee. Cancel anytime.
-                    </motion.p>
+                    </p>
                 </div>
 
                 {/* Cards */}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     MessageCircle,
     ArrowRight,
@@ -13,6 +13,11 @@ export const ContactForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [focused, setFocused] = useState(null);
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => setVisible(true), 100);
+    }, []);
 
     const [formData, setFormData] = useState({
         parentName: "",
@@ -80,6 +85,40 @@ export const ContactForm = () => {
 
     return (
         <section id="contact" className="relative pt-12 pb-8 lg:pb-10 bg-white overflow-hidden">
+            <style>{`
+                .contact-heading {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: clamp(28px, 5vw, 46px);
+                    font-weight: 800;
+                    line-height: 1.1;
+                    letter-spacing: -0.03em;
+                    color: #1a1020;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
+                    margin-bottom: 16px;
+                }
+                .contact-heading.on { opacity: 1; transform: translateY(0); }
+                .contact-heading .grad {
+                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
+                .contact-label {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: 14px;
+                    font-weight: 700;
+                    letter-spacing: 0.18em;
+                    text-transform: uppercase;
+                    color: #FF6B1A;
+                    opacity: 0;
+                    transform: translateY(12px);
+                    transition: all 0.6s ease 0.35s;
+                    margin-bottom: 16px;
+                }
+                .contact-label.on { opacity: 1; transform: translateY(0); }
+            `}</style>
 
             {/* Premium ambient lighting */}
             <div className="absolute top-[-200px] left-1/4 w-[700px] h-[700px] bg-orange-200/30 rounded-full blur-[180px]" />
@@ -89,31 +128,16 @@ export const ContactForm = () => {
                 <div className="grid lg:grid-cols-12 gap-20 items-center">
 
                     {/* LEFT SIDE */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="lg:col-span-5 space-y-8"
-                    >
-                        <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-200/50">
-                                <MessageCircle size={16} />
-                                Direct Inquiry
-                            </div>
-
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight">
-                                Start Your <br />
-                                <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-                                    Culinary Voyage
-                                </span>
-                            </h2>
-
-                            <p className="text-lg text-gray-500 leading-relaxed max-w-md">
-                                Experience the difference. Book a trial or send your
-                                questions — we respond within 24 hours.
-                            </p>
-                        </div>
-                    </motion.div>
+                    <div className="lg:col-span-5 space-y-6">
+                        <p className={`contact-label ${visible ? "on" : ""}`}>Direct Inquiry</p>
+                        <h2 className={`contact-heading ${visible ? "on" : ""}`}>
+                            Start Your <span className="grad">Culinary Voyage</span>
+                        </h2>
+                        <p className="text-lg text-gray-500 leading-relaxed max-w-md" style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.6s ease 0.5s' }}>
+                            Experience the difference. Book a trial or send your
+                            questions — we respond within 24 hours.
+                        </p>
+                    </div>
 
                     {/* RIGHT SIDE FORM */}
                     <motion.div

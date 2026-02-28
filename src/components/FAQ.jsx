@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
@@ -102,40 +102,59 @@ const FAQItem = ({ item, isOpen, onClick }) => {
 
 export const FAQ = () => {
     const [openId, setOpenId] = useState(1);
+    const [visible, setVisible] = useState(false);
     const half = Math.ceil(faqData.length / 2);
+
+    useEffect(() => {
+        setTimeout(() => setVisible(true), 100);
+    }, []);
 
     return (
         <section className="pt-14 lg:pt-12 pb-8 lg:pb-10 bg-white overflow-hidden relative">
+            <style>{`
+                .faq-heading {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: clamp(28px, 5vw, 46px);
+                    font-weight: 800;
+                    line-height: 1.1;
+                    letter-spacing: -0.03em;
+                    color: #1a1020;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
+                    margin-bottom: 16px;
+                }
+                .faq-heading.on { opacity: 1; transform: translateY(0); }
+                .faq-heading .grad {
+                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
+                .faq-label {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: 14px;
+                    font-weight: 700;
+                    letter-spacing: 0.18em;
+                    text-transform: uppercase;
+                    color: #FF6B1A;
+                    opacity: 0;
+                    transform: translateY(12px);
+                    transition: all 0.6s ease 0.35s;
+                }
+                .faq-label.on { opacity: 1; transform: translateY(0); }
+            `}</style>
+
             <div className="container-custom">
                 {/* Header */}
-                <div className="text-center max-w-2xl mx-auto mb-6 space-y-4">
-                    <motion.span
-                        initial={{ opacity: 0, y: -10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-200/50"
-                    >
-                        <HelpCircle size={14} />
-                        FAQ
-                    </motion.span>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight"
-                    >
-                        Got <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">Questions?</span>
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-lg text-gray-500 leading-relaxed"
-                    >
+                <div className="text-center max-w-2xl mx-auto mb-6">
+                    <h2 className={`faq-heading ${visible ? "on" : ""}`}>
+                        Got <span className="grad">Questions?</span>
+                    </h2>
+                    <p className={`faq-label ${visible ? "on" : ""}`}>Frequently Asked Questions</p>
+                    <p className="text-lg text-gray-500 leading-relaxed mt-4" style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.6s ease 0.5s' }}>
                         Everything you need to know about Orange Figs. Can't find your answer? <a href="#contact" className="text-orange-500 font-bold underline underline-offset-2">Contact us</a>.
-                    </motion.p>
+                    </p>
                 </div>
 
                 {/* Two Column FAQ */}

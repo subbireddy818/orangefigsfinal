@@ -51,6 +51,11 @@ export const SocialVideos = () => {
     const scrollRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => setVisible(true), 100);
+    }, []);
 
     const checkScroll = () => {
         if (scrollRef.current) {
@@ -78,34 +83,52 @@ export const SocialVideos = () => {
 
     return (
         <section className="pt-16 pb-8 lg:pb-10 bg-white overflow-hidden relative">
+            <style>{`
+                .stories-heading {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: clamp(28px, 5vw, 46px);
+                    font-weight: 800;
+                    line-height: 1.1;
+                    letter-spacing: -0.03em;
+                    color: #1a1020;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
+                    margin-bottom: 16px;
+                }
+                .stories-heading.on { opacity: 1; transform: translateY(0); }
+                .stories-heading .grad {
+                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
+                .stories-label {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: 14px;
+                    font-weight: 700;
+                    letter-spacing: 0.18em;
+                    text-transform: uppercase;
+                    color: #FF6B1A;
+                    opacity: 0;
+                    transform: translateY(12px);
+                    transition: all 0.6s ease 0.35s;
+                }
+                .stories-label.on { opacity: 1; transform: translateY(0); }
+            `}</style>
+
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-50/50 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="container-custom">
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-6 space-y-4">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider mb-3 shadow-lg shadow-orange-200/50"
-                    >
-                        <Instagram size={16} />
-                        Live from the Kitchen
-                    </motion.div>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-tight"
-                    >
-                        Orange Figs <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">Stories</span>
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-base text-gray-500 leading-relaxed"
-                    >
+                <div className="text-center max-w-3xl mx-auto mb-6">
+                    <h2 className={`stories-heading ${visible ? "on" : ""}`}>
+                        Orange Figs <span className="grad">Stories</span>
+                    </h2>
+                    <p className={`stories-label ${visible ? "on" : ""}`}>Live from the Kitchen</p>
+                    <p className="text-base text-gray-500 leading-relaxed mt-4" style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.6s ease 0.5s' }}>
                         Watch our latest moments from classes, camps, and celebrations.
-                    </motion.p>
+                    </p>
                 </div>
 
             </div>

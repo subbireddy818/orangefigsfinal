@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
 import {
     UserCheck,
@@ -81,20 +81,56 @@ const stats = [
 ];
 
 export const WhyChooseUs = () => {
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => setVisible(true), 100);
+    }, []);
+
     return (
         <section id="why" className="bg-white pt-12 pb-0 border-t border-orange-100">
+            <style>{`
+                .why-heading {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: clamp(28px, 5vw, 46px);
+                    font-weight: 800;
+                    line-height: 1.1;
+                    letter-spacing: -0.03em;
+                    color: #1a1020;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
+                }
+                .why-heading.on { opacity: 1; transform: translateY(0); }
+                .why-heading .grad {
+                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
+                .why-label {
+                    font-family: 'AndesRounded', system-ui, sans-serif;
+                    font-size: 14px;
+                    font-weight: 700;
+                    letter-spacing: 0.18em;
+                    text-transform: uppercase;
+                    color: #FF6B1A;
+                    opacity: 0;
+                    transform: translateY(12px);
+                    transition: all 0.6s ease 0.35s;
+                    margin-bottom: 16px;
+                    display: inline-block;
+                }
+                .why-label.on { opacity: 1; transform: translateY(0); }
+            `}</style>
             <div className="container-custom">
 
                 {/* HEADER */}
                 <div className="flex flex-col lg:flex-row justify-between gap-10 mb-20">
-                    <div className="space-y-5">
-                        <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-200/50">
-                            Why Choose Us
-                        </span>
-
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
-                            The Orange Figs{" "}
-                            <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">Difference</span>
+                    <div className="space-y-4">
+                        <p className={`why-label ${visible ? "on" : ""}`}>Why Choose Us</p>
+                        <h2 className={`why-heading ${visible ? "on" : ""}`}>
+                            The Orange Figs <span className="grad">Difference</span>
                         </h2>
                     </div>
 
