@@ -16,7 +16,7 @@ export const Newsletter = () => {
     };
 
     return (
-        <section className="bg-white pt-0 pb-8 lg:pb-10 overflow-hidden">
+        <section className="bg-white pt-4 pb-8 lg:pb-10 overflow-hidden">
             <div className="container-custom">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}

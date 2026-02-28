@@ -82,7 +82,7 @@ const stats = [
 
 export const WhyChooseUs = () => {
     return (
-        <section id="why" className="bg-white pt-0 pb-0 border-t border-orange-100">
+        <section id="why" className="bg-white pt-12 pb-0 border-t border-orange-100">
             <div className="container-custom">
 
                 {/* HEADER */}

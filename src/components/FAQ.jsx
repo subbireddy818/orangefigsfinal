@@ -105,7 +105,7 @@ export const FAQ = () => {
     const half = Math.ceil(faqData.length / 2);
 
     return (
-        <section className="pt-0 pb-8 lg:pb-10 bg-white overflow-hidden relative">
+        <section className="pt-14 lg:pt-12 pb-8 lg:pb-10 bg-white overflow-hidden relative">
             <div className="container-custom">
                 {/* Header */}
                 <div className="text-center max-w-2xl mx-auto mb-6 space-y-4">

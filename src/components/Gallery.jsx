@@ -13,7 +13,7 @@ export const Gallery = () => {
     const nextRef = useRef(null);
 
     return (
-        <section id="gallery" className="pt-0 pb-6 lg:pb-8 bg-white overflow-hidden font-['Montserrat',sans-serif]">
+        <section id="gallery" className="pt-10 pb-6 lg:pb-8 bg-white overflow-hidden font-['Montserrat',sans-serif]">
             <div className="container-custom text-center mb-8">
                 <h2 className="text-[1.2rem] md:text-3xl font-black text-gray-900 tracking-tight max-w-4xl mx-auto leading-tight">
                     1,200+ Little Chefs learning and enjoying every month

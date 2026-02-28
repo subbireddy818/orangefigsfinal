@@ -31,7 +31,7 @@ const partners = [
 
 export const Partnerships = () => {
     return (
-        <section className="relative pt-0 pb-8 lg:pb-10 bg-white overflow-hidden">
+        <section className="relative pt-12 pb-8 lg:pb-10 bg-white overflow-hidden">
             <div className="container-custom relative z-10">
 
                 {/* Header */}

@@ -75,7 +75,7 @@ export const SocialVideos = () => {
     };
 
     return (
-        <section className="pt-0 pb-8 lg:pb-10 bg-white overflow-hidden relative">
+        <section className="pt-16 pb-8 lg:pb-10 bg-white overflow-hidden relative">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-50/50 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="container-custom">

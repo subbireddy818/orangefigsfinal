@@ -35,7 +35,7 @@ const steps = [
 
 export const HowItWorks = () => {
     return (
-        <section id="how-it-works" className="pt-0 pb-8 lg:pb-12 bg-[#FFFBF5] overflow-hidden">
+        <section id="how-it-works" className="pt-14 lg:pt-20 pb-8 lg:pb-12 bg-[#FFFBF5] overflow-hidden">
             <div className="container-custom">
                 {/* Header */}
                 <div className="text-center max-w-2xl mx-auto mb-8 space-y-4">

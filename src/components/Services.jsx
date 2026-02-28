@@ -86,7 +86,7 @@ export const Services = () => {
     };
 
     return (
-        <section id="classes" className="bg-white pt-0 pb-8 lg:pb-12 font-andes-rounded">
+        <section id="classes" className="bg-white pt-14 lg:pt-20 pb-8 lg:pb-12 font-andes-rounded">
             <div className="container-custom">
 
                 {/* Section Header */}

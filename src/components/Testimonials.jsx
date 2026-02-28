@@ -255,7 +255,7 @@ export default function TestimonialsCarousel() {
       {/* Section — yellow bg with wavy white edges */}
       <section
         id="testimonials"
-        className="relative w-full overflow-hidden pt-0 pb-10 lg:pb-12"
+        className="relative w-full overflow-hidden pt-20 pb-10 lg:pb-12"
         style={{ background: "#FDD871" }}
       >
         {/* Wavy top white edge */}

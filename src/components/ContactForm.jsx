@@ -79,7 +79,7 @@ export const ContactForm = () => {
     };
 
     return (
-        <section id="contact" className="relative pt-0 pb-8 lg:pb-10 bg-white overflow-hidden">
+        <section id="contact" className="relative pt-12 pb-8 lg:pb-10 bg-white overflow-hidden">
 
             {/* Premium ambient lighting */}
             <div className="absolute top-[-200px] left-1/4 w-[700px] h-[700px] bg-orange-200/30 rounded-full blur-[180px]" />
