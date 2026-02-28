@@ -1,11 +1,11 @@
-/* Global Andes Font Helpers */
+/* Global Andes Rounded Font Helpers (from src/fonts final) */
 .andes-bold {
-    font-family: 'Andes', sans-serif;
+    font-family: 'AndesRounded', sans-serif;
     font-weight: 700;
 }
 
 .andes-regular {
-    font-family: 'Andes', sans-serif;
+    font-family: 'AndesRounded', sans-serif;
     font-weight: 400;
 }
 
@@ -1412,9 +1412,9 @@ body {
     gap: 0.5rem;
 }
 
-/* Both lines — identical style */
+/* Both lines — identical style (Andes Rounded from src/fonts final) */
 .hero-line {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'AndesRounded', sans-serif;
     font-size: clamp(0.9rem, 1.5vw, 1.1rem);
     font-weight: 500;
     line-height: 1.7;

@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:ital,wght@0,500;0,700;0,800;1,700&display=swap');
+
+.testimonials-namespace {
+    --orange: #FCAB52;
+    --plum: #B42A63;
+    --red: #FA4A38;
+    --pink: #D41450;
+    --yellow: #FDD871;
+    --cyan: #3BC7D5;
+    --blue: #366BC4;
+    --olive: #748B42;
+    --lp: #FA68A5;
+    --ink: #1C0A08;
+    --bg: #FEE07E;
+
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.testimonials-namespace *,
+.testimonials-namespace *::before,
+.testimonials-namespace *::after {
+    box-sizing: border-box;
+}
+
+
+/* ── SECTION ── */
+.testimonials-namespace .section-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 90px 40px 110px;
+}
+
+/* ── HEADER ── */
+.testimonials-namespace .header {
+    text-align: center;
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: riseIn 0.8s cubic-bezier(.34, 1.4, .64, 1) 0.1s both;
+}
+
+.testimonials-namespace .header h2 {
+    font-family: 'AndesRounded', 'Nunito', sans-serif;
+    font-size: clamp(32px, 5vw, 44px);
+    color: #1a2b43;
+    line-height: 1.1;
+    margin: 0;
+    font-weight: 800;
+}
+
+/* ── CAROUSEL WRAPPER ── */
+.testimonials-namespace .carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+/* ── WAVY CARDS GRID (carousel 3-up) ── */
+.testimonials-namespace .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 28px;
+    align-items: start;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Organic vertical offsets for wavy flow */
+.testimonials-namespace .cards-grid .card-wrap:nth-child(2) {
+    margin-top: 48px;
+}
+
+.testimonials-namespace .cards-grid .card-wrap:nth-child(3) {
+    margin-top: -18px;
+}
+
+/* Slide animations */
+.testimonials-namespace .cards-grid.slide-right {
+    animation: slideInRight 0.38s cubic-bezier(.34, 1.3, .64, 1);
+}
+
+.testimonials-namespace .cards-grid.slide-left {
+    animation: slideInLeft 0.38s cubic-bezier(.34, 1.3, .64, 1);
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0.4;
+        transform: translateX(48px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0.4;
+        transform: translateX(-48px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ── ARROW BUTTONS ── */
+.testimonials-namespace .carousel-arrow {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    color: var(--ink);
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    z-index: 10;
+    user-select: none;
+}
+
+.testimonials-namespace .carousel-arrow:hover {
+    background: var(--orange);
+    transform: scale(1.1);
+    box-shadow: 0 8px 28px rgba(252, 171, 82, 0.45);
+}
+
+.testimonials-namespace .carousel-arrow-left {
+    margin-right: 18px;
+}
+
+.testimonials-namespace .carousel-arrow-right {
+    margin-left: 18px;
+}
+
+/* ── DOT NAVIGATION ── */
+.testimonials-namespace .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 36px;
+}
+
+.testimonials-namespace .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(28, 10, 8, 0.18);
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+    padding: 0;
+}
+
+.testimonials-namespace .carousel-dot-active {
+    background: var(--plum);
+    transform: scale(1.4);
+}
+
+.testimonials-namespace .carousel-dot:hover:not(.carousel-dot-active) {
+    background: var(--orange);
+    transform: scale(1.2);
+}
+
+.testimonials-namespace .card-wrap {
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px) rotate(-1deg);
+    cursor: default;
+}
+
+.testimonials-namespace .card-wrap.visible {
+    animation: cardPop 0.55s cubic-bezier(.34, 1.5, .64, 1) forwards;
+}
+
+.testimonials-namespace .card-wrap:hover .card-svg path.bg-shape {
+    filter: brightness(1.03);
+}
+
+.testimonials-namespace .card-wrap:hover .card-inner-content {
+    transform: translateY(-8px);
+}
+
+.testimonials-namespace .card-inner-content {
+    transition: transform 0.35s cubic-bezier(.34, 1.4, .64, 1);
+}
+
+/* SVG blob container */
+.testimonials-namespace .card-svg-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.testimonials-namespace .card-svg {
+    width: 100%;
+    display: block;
+    filter: drop-shadow(0 18px 50px rgba(0, 0, 0, 0.13)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.07));
+    transition: filter 0.3s ease;
+}
+
+.testimonials-namespace .card-wrap:hover .card-svg {
+    filter: drop-shadow(0 28px 60px rgba(0, 0, 0, 0.18)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.1));
+}
+
+/* Content overlaid on SVG */
+.testimonials-namespace .card-content {
+    position: absolute;
+    inset: 0;
+    padding: 48px 34px 36px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Avatar */
+.testimonials-namespace .avatar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.testimonials-namespace .avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.testimonials-namespace .author-name {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.2;
+}
+
+.testimonials-namespace .author-role {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: rgba(28, 10, 8, 0.55);
+    margin-top: 1px;
+}
+
+.testimonials-namespace .verified {
+    margin-left: auto;
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+    color: white;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.testimonials-namespace .stars-card {
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.testimonials-namespace .big-quote {
+    font-family: 'Baloo 2', cursive;
+    font-size: 72px;
+    line-height: 0.65;
+    color: rgba(28, 10, 8, 0.1);
+    margin-bottom: 4px;
+    display: block;
+    font-weight: 800;
+}
+
+.testimonials-namespace .quote-text {
+    font-size: 14px;
+    line-height: 1.72;
+    color: #2A1008;
+    font-weight: 600;
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.testimonials-namespace .bottom-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.testimonials-namespace .recipe-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 13px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+    color: var(--ink);
+    backdrop-filter: blur(4px);
+}
+
+.testimonials-namespace .read-more {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--plum);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+}
+
+.testimonials-namespace .read-more:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Animations */
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardPop {
+    from {
+        opacity: 0;
+        transform: translateY(40px) rotate(-1deg) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+}
+
+@media (max-width: 900px) {
+    .testimonials-namespace .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 24px;
+    }
+
+    .testimonials-namespace .cards-grid .card-wrap {
+        margin-top: 0 !important;
+    }
+
+    .testimonials-namespace .cards-grid .card-wrap:nth-child(even) {
+        margin-top: 30px !important;
+    }
+}
+
+@media (max-width: 580px) {
+    .testimonials-namespace .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .testimonials-namespace .cards-grid .card-wrap {
+        margin-top: 0 !important;
+    }
+
+    .testimonials-namespace .section-inner {
+        padding: 60px 20px 80px;
+    }
+}

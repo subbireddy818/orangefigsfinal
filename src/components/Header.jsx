@@ -33,7 +33,7 @@ export const Header = () => {
     };
 
     const navItems = [
-        { label: 'Programs', id: 'classes' },
+        { label: 'Our Services', id: 'services' },
         { label: 'How It Works', id: 'how-it-works' },
         { label: 'Why Us', id: 'why' },
         { label: 'Gallery', id: 'gallery' },
@@ -63,12 +63,6 @@ export const Header = () => {
                     >
                         <div className="relative -my-4">
                             <img src={logo} alt="Logo" className="w-20 h-20 object-contain relative z-10" />
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-2xl font-extrabold tracking-tighter text-gray-900 leading-none">
-                                Orange<span className="text-orange-500">Figs</span>
-                            </span>
-                            <span className="text-[9px] font-extrabold uppercase tracking-[0.4em] text-orange-400 mt-0.5 opacity-80">Culinary School</span>
                         </div>
                     </motion.div>
 

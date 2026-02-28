@@ -1,209 +1,379 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState, useRef, useEffect, useCallback } from "react";
 
-const parentTestimonials = [
-    {
-        id: 1,
-        name: 'Samatha Tulla',
-        role: 'Mother of Virender (8 years old)',
-        content: "The programme helped my son give shape to his restaurant dream. Earlier, he struggled to express himself; now he can cook daily for our entire joint family, even our staff. I've seen confidence, clarity and purpose grow in him. The impact has been truly positive.",
-        rating: 5,
-    },
-    {
-        id: 2,
-        name: 'Mamatha Madireddy',
-        role: 'Mother of Dushyant (12 years old)',
-        content: "Dushyant has always loved TCL, but after the summer programme, his understanding of food deepened remarkably. He now speaks about ingredients, sourcing and nutrition with clarity and detail. I'm incredibly happy to see how informed and passionate he has become.",
-        rating: 5,
-    },
-    {
-        id: 3,
-        name: 'Sulogna Gupta',
-        role: 'Mother of Ayushi (14 years old)',
-        content: "Ayushi was always passionate about cooking, but TCL gave her direction. I've seen her become more patient, process-oriented and confident. She now understands that cooking is a complete journey, not just a dish. It's helping her move closer to her dream of becoming a chef.",
-        rating: 5,
-    },
-    {
-        id: 4,
-        name: 'Keerti',
-        role: 'Mother of Ritika',
-        content: "This experience transformed Ritika. She found genuine passion and confidence in cooking like never before. Now she cooks independently at home, even earning and reinvesting her money into ingredients. I've seen remarkable growth, dedication and joy; something she hadn't discovered elsewhere.",
-        rating: 5,
-    },
+// ── Testimonial data ──────────────────────────────────────────────
+const testimonials = [
+  {
+    id: 1,
+    name: "Samatha Tulla",
+    sub: "Mother of Virender (8 years old)",
+    category: "Parents",
+    quote:
+      "The programme helped my son give shape to his restaurant dream. Earlier, he struggled to express himself; now he can cook daily for our entire joint family, even our staff. I've seen confidence, clarity and purpose grow in him. The impact has been truly positive.",
+    gradientFrom: "#FFF4DC",
+    gradientTo: "#FFE4A8",
+    waveColor: "#FCAB52",
+  },
+  {
+    id: 2,
+    name: "Mamatha Madireddy",
+    sub: "Mother of Dushyant (12 years old)",
+    category: "Parents",
+    quote:
+      "Dushyant has always loved TCL, but after the summer programme, his understanding of food deepened remarkably. He now speaks about ingredients, sourcing and nutrition with clarity and detail. I'm incredibly happy to see how informed and passionate he has become.",
+    gradientFrom: "#FDE8F2",
+    gradientTo: "#FBCADC",
+    waveColor: "#D41450",
+  },
+  {
+    id: 3,
+    name: "Sulogna Gupta",
+    sub: "Mother of Ayushi (14 years old)",
+    category: "Parents",
+    quote:
+      "Ayushi was always passionate about cooking, but TCL gave her direction. I've seen her become more patient, process-oriented and confident. She now understands that cooking is a complete journey, not just a dish. It's helping her move closer to her dream of becoming a chef.",
+    gradientFrom: "#DFF8F9",
+    gradientTo: "#B5EFF2",
+    waveColor: "#3BC7D5",
+  },
+  {
+    id: 4,
+    name: "Keerti",
+    sub: "Mother of Ritika",
+    category: "Parents",
+    quote:
+      "This experience transformed Ritika. She found genuine passion and confidence in cooking like never before. Now she cooks independently at home, even earning and reinvesting her money into ingredients. I've seen remarkable growth, dedication and joy; something she hadn't discovered elsewhere.",
+    gradientFrom: "#FFFCE5",
+    gradientTo: "#FFF3A8",
+    waveColor: "#FDD871",
+  },
+  {
+    id: 5,
+    name: "Ronit",
+    sub: "13 years old",
+    category: "Young Chefs",
+    quote:
+      "Cooking has always excited me, but this programme showed me there's so much more to food than just recipes. I discovered the science, nutrition and friendships that come with it. Meeting inspiring chefs strengthened my dream of becoming an Italian chef and earning a place on TCL's chef wall.",
+    gradientFrom: "#E6EEFB",
+    gradientTo: "#C0D2F5",
+    waveColor: "#366BC4",
+  },
+  {
+    id: 6,
+    name: "Nidhi",
+    sub: "13 years old",
+    category: "Young Chefs",
+    quote:
+      "Through the Summer Programme, I experienced how a professional kitchen truly works. I learnt advanced techniques and loved the cook-off challenge — it taught me confidence under pressure. Baking week strengthened my dream of opening my own bakery and proved big wonders can begin in small kitchens.",
+    gradientFrom: "#EFF5E0",
+    gradientTo: "#D5E8B0",
+    waveColor: "#748B42",
+  },
+  {
+    id: 7,
+    name: "Arjun",
+    sub: "9 years old",
+    category: "Young Chefs",
+    quote:
+      "I joined to gain hands-on cooking experience for my future food truck dream. The programme was fun, practical and inspiring. I made great friends and gained clarity about my ideas. Now, I feel more confident and excited to start shaping my food truck venture soon.",
+    gradientFrom: "#FDE8F2",
+    gradientTo: "#FBCADC",
+    waveColor: "#FA4A38",
+  },
 ];
 
-const chefTestimonials = [
-    {
-        id: 5,
-        name: 'Ronit',
-        role: '13 years old',
-        content: "Cooking has always excited me, but this programme showed me there's so much more to food than just recipes. I discovered the science, nutrition and friendships that come with it. Meeting inspiring chefs strengthened my dream of becoming an Italian chef and earning a place on TCL's chef wall.",
-        rating: 5,
-    },
-    {
-        id: 6,
-        name: 'Nidhi',
-        role: '13 years old',
-        content: "Through the Summer Programme, I experienced how a professional kitchen truly works. I learnt advanced techniques and loved the cook-off challenge — it taught me confidence under pressure. Baking week strengthened my dream of opening my own bakery and proved big wonders can begin in small kitchens.",
-        rating: 5,
-    },
-    {
-        id: 7,
-        name: 'Arjun',
-        role: '9 years old',
-        content: "I joined to gain hands-on cooking experience for my future food truck dream. The programme was fun, practical and inspiring. I made great friends and gained clarity about my ideas. Now, I feel more confident and excited to start shaping my food truck venture soon.",
-        rating: 5,
-    },
-];
+// ── Wavy Blob Card ────────────────────────────────────────────────
+function BlobCard({ item }) {
+  const gradId = `grad-${item.id}`;
 
-const TestimonialCard = ({ t, i }) => (
-    <motion.div
-        key={t.id}
-        initial={{ opacity: 0, scale: 0.98 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: i * 0.05 }}
-        className="min-w-[85vw] md:min-w-[340px] lg:min-w-[380px] snap-center"
+  return (
+    <div
+      className="relative flex-none w-[340px] cursor-default group"
+      style={{ transition: "transform 0.35s cubic-bezier(.34,1.4,.64,1)" }}
     >
-        <div className="h-full bg-white/10 backdrop-blur-sm md:backdrop-blur-md border border-white/20 rounded-[2rem] p-6 lg:p-8 flex flex-col gap-6 relative group hover:bg-white/15 transition-all duration-500">
-            <Quote className="absolute top-8 right-8 text-white/10 group-hover:text-amber-400/20 transition-colors" size={50} />
-
-            <div className="flex gap-0.5 relative z-10">
-                {[...Array(t.rating)].map((_, j) => (
-                    <Star key={j} size={14} className="fill-amber-400 text-amber-400" />
-                ))}
-            </div>
-
-            <p className="text-white text-base lg:text-lg leading-relaxed italic relative z-10 font-medium tracking-tight">
-                "{t.content}"
-            </p>
-
-            <div className="mt-auto flex items-center gap-4 pt-6 border-t border-white/10 relative z-10">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-400 to-white flex items-center justify-center text-orange-600 font-extrabold text-sm shadow-xl">
-                    {t.name[0]}
-                </div>
-                <div>
-                    <h4 className="text-white font-bold tracking-tight opacity-90">{t.name}</h4>
-                    <p className="text-white/60 text-[11px] tracking-wide font-medium">{t.role}</p>
-                </div>
-            </div>
-        </div>
-    </motion.div>
-);
-
-const CarouselSection = ({ title, items }) => {
-    const scrollRef = useRef(null);
-    const [canScrollLeft, setCanScrollLeft] = useState(false);
-    const [canScrollRight, setCanScrollRight] = useState(true);
-
-    const checkScroll = () => {
-        if (scrollRef.current) {
-            const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-            setCanScrollLeft(scrollLeft > 10);
-            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-        }
-    };
-
-    useEffect(() => {
-        const currentRef = scrollRef.current;
-        if (currentRef) {
-            currentRef.addEventListener('scroll', checkScroll);
-            checkScroll();
-            setTimeout(checkScroll, 100);
-        }
-        return () => currentRef?.removeEventListener('scroll', checkScroll);
-    }, []);
-
-    const scroll = (direction) => {
-        if (scrollRef.current) {
-            const { clientWidth } = scrollRef.current;
-            scrollRef.current.scrollBy({
-                left: direction === 'left' ? -clientWidth * 0.7 : clientWidth * 0.7,
-                behavior: 'smooth',
-            });
-        }
-    };
-
-    return (
-        <div className="mb-12">
-            <div className="flex items-end justify-between mb-6 gap-4">
-                <motion.h3
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    className="text-2xl lg:text-3xl font-black text-white tracking-tight"
-                >
-                    {title}
-                </motion.h3>
-                <div className="flex gap-2 shrink-0">
-                    <button
-                        onClick={() => scroll('left')}
-                        disabled={!canScrollLeft}
-                        className={`w-11 h-11 rounded-xl flex items-center justify-center border transition-all ${canScrollLeft
-                                ? 'border-white/30 text-white bg-white/10 hover:bg-white hover:text-orange-600'
-                                : 'border-white/5 text-white/10 cursor-not-allowed bg-transparent'
-                            }`}
-                    >
-                        <ChevronLeft size={18} />
-                    </button>
-                    <button
-                        onClick={() => scroll('right')}
-                        disabled={!canScrollRight}
-                        className={`w-11 h-11 rounded-xl flex items-center justify-center border transition-all ${canScrollRight
-                                ? 'border-white/30 text-white bg-white/10 hover:bg-white hover:text-orange-600'
-                                : 'border-white/5 text-white/10 cursor-not-allowed bg-transparent'
-                            }`}
-                    >
-                        <ChevronRight size={18} />
-                    </button>
-                </div>
-            </div>
-            <div
-                ref={scrollRef}
-                className="flex gap-5 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-                {items.map((t, i) => (
-                    <TestimonialCard key={t.id} t={t} i={i} />
-                ))}
-            </div>
-        </div>
-    );
-};
-
-export const Testimonials = () => {
-    return (
-        <section
-            id="testimonials"
-            className="relative min-h-[600px] flex flex-col justify-center py-14 lg:py-20 overflow-hidden"
-            style={{
-                background: 'linear-gradient(135deg, #F97316 0%, #EA580C 50%, #D97706 100%)',
-            }}
+      <div className="relative transition-transform duration-300 group-hover:-translate-y-2 group-hover:scale-[1.02]">
+        {/* SVG Blob background */}
+        <svg
+          viewBox="0 0 360 480"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full block"
+          style={{
+            filter:
+              "drop-shadow(0 16px 44px rgba(0,0,0,0.13)) drop-shadow(0 4px 10px rgba(0,0,0,0.07))",
+            transition: "filter 0.3s ease",
+          }}
         >
-            <div className="hidden md:block absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-white/5 blur-[120px] pointer-events-none" />
-            <div className="hidden md:block absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-amber-300/10 blur-[100px] pointer-events-none" />
+          <defs>
+            <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style={{ stopColor: item.gradientFrom }} />
+              <stop offset="100%" style={{ stopColor: item.gradientTo }} />
+            </linearGradient>
+          </defs>
+          {/* Main blob shape — taller */}
+          <path
+            fill={`url(#${gradId})`}
+            d="M38,28C10,14-6,50 10,86C24,116 6,150 14,192C22,234-5,262 8,304C20,344 0,378 15,416C28,446 66,468 106,463C146,458 180,474 218,467C256,460 295,474 326,456C355,438 374,406 368,372C362,338 378,306 374,274C370,242 384,210 374,178C364,146 380,110 359,84C339,58 302,46 266,52C230,58 194,42 158,46C122,50 84,38 52,54C38,60 42,36 38,28Z"
+          />
+          {/* Wavy top stripe */}
+          <path
+            fill={item.waveColor}
+            opacity="0.9"
+            d="M38,28C10,14-6,50 10,86C24,116 6,150 14,192C20,212 16,222 24,221C56,208 106,221 155,212C204,203 250,215 296,204C333,195 360,203 368,188C375,171 373,144 370,121C367,94 378,66 359,48C339,28 302,18 266,24C230,30 194,13 158,17C122,21 84,10 52,25C38,30 40,36 38,28Z"
+          />
+        </svg>
 
-            <div className="container-custom relative z-10 w-full">
-                <div className="mb-10 space-y-2">
-                    <motion.span
-                        initial={{ opacity: 0, y: -10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-[0.2em] border border-white/20"
-                    >
-                        Success Stories
-                    </motion.span>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 15 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        className="text-3xl lg:text-5xl font-black text-white tracking-tight leading-tight"
-                    >
-                        Loved by <span className="text-amber-200 underline underline-offset-4 decoration-amber-400/50">Parents</span> & Kids.
-                    </motion.h2>
-                </div>
+        {/* Card content — absolutely positioned over SVG */}
+        <div
+          className="absolute inset-0 flex flex-col"
+          style={{ padding: "58px 30px 32px" }}
+        >
+          {/* Name + sub */}
+          <p
+            className="font-bold text-[#1C0A08]"
+            style={{
+              fontFamily: "'Baloo 2', cursive",
+              fontSize: "16px",
+              lineHeight: 1.2,
+            }}
+          >
+            {item.name}
+          </p>
+          <p
+            className="mb-3"
+            style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "11.5px",
+              fontWeight: 600,
+              color: "rgba(28,10,8,0.5)",
+              marginTop: "2px",
+            }}
+          >
+            {item.sub}
+          </p>
 
-                <CarouselSection title="What Parents Say" items={parentTestimonials} />
-                <CarouselSection title="What Our Young Chefs Say" items={chefTestimonials} />
+          {/* Big quote mark */}
+          <span
+            className="block leading-none mb-1"
+            style={{
+              fontFamily: "'Baloo 2', cursive",
+              fontSize: "64px",
+              color: "rgba(28,10,8,0.09)",
+              fontWeight: 800,
+              lineHeight: 0.65,
+            }}
+          >
+            "
+          </span>
+
+          {/* Quote text */}
+          <p
+            className="flex-1 text-[#2A1008] font-semibold"
+            style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "13.5px",
+              lineHeight: 1.72,
+            }}
+          >
+            {item.quote}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Main Component ────────────────────────────────────────────────
+export default function TestimonialsCarousel() {
+  const VISIBLE = 3;
+  const GAP = 28;
+  const CARD_W = 340;
+
+  const [activeFilter, setActiveFilter] = useState("All Stories");
+  const [current, setCurrent] = useState(0);
+  const trackRef = useRef(null);
+  const startXRef = useRef(0);
+
+  const filtered =
+    activeFilter === "All Stories"
+      ? testimonials
+      : testimonials.filter((t) => t.category === activeFilter);
+
+  const TOTAL = filtered.length;
+  const PAGES = Math.max(1, TOTAL - VISIBLE + 1);
+
+  const goTo = useCallback(
+    (idx) => {
+      const clamped = Math.max(0, Math.min(idx, PAGES - 1));
+      setCurrent(clamped);
+    },
+    [PAGES]
+  );
+
+  // Reset to 0 when filter changes
+  useEffect(() => {
+    setCurrent(0);
+  }, [activeFilter]);
+
+  // Translate track
+  useEffect(() => {
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translateX(-${current * (CARD_W + GAP)}px)`;
+    }
+  }, [current, CARD_W, GAP]);
+
+  // Keyboard
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "ArrowLeft") goTo(current - 1);
+      if (e.key === "ArrowRight") goTo(current + 1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [current, goTo]);
+
+  // Touch swipe
+  const onTouchStart = (e) => {
+    startXRef.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e) => {
+    const diff = startXRef.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+  };
+
+  return (
+    <>
+      {/* Google Fonts */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@500;600;700;800&display=swap');
+        @keyframes riseIn {
+          from { opacity: 0; transform: translateY(24px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .rise-in { animation: riseIn 0.7s ease both; }
+        .rise-in-delay { animation: riseIn 0.7s ease 0.3s both; }
+      `}</style>
+
+      {/* Section — yellow bg with wavy white edges */}
+      <section
+        id="testimonials"
+        className="relative w-full overflow-hidden py-20"
+        style={{ background: "#FDD871" }}
+      >
+        {/* Wavy top white edge */}
+        <div
+          className="absolute top-0 left-0 w-full h-14 bg-white pointer-events-none"
+          style={{ clipPath: "ellipse(55% 100% at 50% 0%)" }}
+        />
+        {/* Wavy bottom white edge */}
+        <div
+          className="absolute bottom-0 left-0 w-full h-14 bg-white pointer-events-none"
+          style={{ clipPath: "ellipse(55% 100% at 50% 100%)" }}
+        />
+
+        {/* Heading */}
+        <div className="text-center px-5 mb-8 rise-in">
+          <h2
+            className="font-extrabold tracking-tight text-[#1C0A08] mb-6"
+            style={{
+              fontFamily: "'Baloo 2', cursive",
+              fontSize: "clamp(32px, 5vw, 60px)",
+            }}
+          >
+            See why families{" "}
+            <span style={{ color: "#B42A63" }}>love us...</span>
+          </h2>
+
+          {/* Filter Buttons */}
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            {["All Stories", "Parents", "Young Chefs"].map((label) => (
+              <button
+                key={label}
+                onClick={() => setActiveFilter(label)}
+                className="px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-250 border-2"
+                style={{
+                  fontFamily: "'Nunito', sans-serif",
+                  background: activeFilter === label ? "#B42A63" : "white",
+                  color: activeFilter === label ? "white" : "#1C0A08",
+                  borderColor: activeFilter === label ? "#B42A63" : "#1C0A08",
+                  boxShadow: activeFilter === label
+                    ? "0 6px 20px rgba(180,42,99,0.35)"
+                    : "0 3px 10px rgba(0,0,0,0.08)",
+                  transform: activeFilter === label ? "translateY(-2px)" : "none",
+                }}
+              >
+                {label === "All Stories" && "✨ "}
+                {label === "Parents" && "👨‍👩‍👧 "}
+                {label === "Young Chefs" && "👨‍🍳 "}
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Carousel */}
+        <div className="relative w-full rise-in-delay">
+          {/* Track wrapper */}
+          <div className="overflow-hidden py-8">
+            <div
+              ref={trackRef}
+              className="flex"
+              style={{
+                gap: `${GAP}px`,
+                transition: "transform 0.55s cubic-bezier(.77,0,.175,1)",
+                willChange: "transform",
+                // Center 3 visible cards
+                paddingLeft: `calc((100% - ${3 * CARD_W + 2 * GAP}px) / 2)`,
+                paddingRight: `calc((100% - ${3 * CARD_W + 2 * GAP}px) / 2)`,
+              }}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
+              {filtered.map((item) => (
+                <BlobCard key={item.id} item={item} />
+              ))}
             </div>
-        </section>
-    );
-};
+          </div>
+
+          {/* Nav row */}
+          <div className="flex items-center justify-center gap-6 mt-2">
+            {/* Prev */}
+            <button
+              onClick={() => goTo(current - 1)}
+              className="w-12 h-12 rounded-full bg-white border-2 border-[#1C0A08] flex items-center justify-center text-xl text-[#1C0A08] shadow-md transition-all duration-200 hover:bg-[#1C0A08] hover:text-white hover:scale-110"
+              aria-label="Previous"
+            >
+              ←
+            </button>
+
+            {/* Dots */}
+            <div className="flex items-center gap-2">
+              {Array.from({ length: PAGES }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i)}
+                  className="h-2 rounded-full transition-all duration-300"
+                  style={{
+                    width: i === current ? "28px" : "8px",
+                    background: i === current ? "#B42A63" : "rgba(28,10,8,0.25)",
+                  }}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Next */}
+            <button
+              onClick={() => goTo(current + 1)}
+              className="w-12 h-12 rounded-full bg-white border-2 border-[#1C0A08] flex items-center justify-center text-xl text-[#1C0A08] shadow-md transition-all duration-200 hover:bg-[#1C0A08] hover:text-white hover:scale-110"
+              aria-label="Next"
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// Named export for App.js (header nav links to #testimonials)
+export { TestimonialsCarousel as Testimonials };
