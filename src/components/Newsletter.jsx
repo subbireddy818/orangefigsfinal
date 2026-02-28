@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Sparkles, CheckCircle2, ChefHat, Bell, Gift } from 'lucide-react';
+import { Mail, CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';
-
-const perks = [
-    { icon: Bell, text: 'New workshop announcements' },
-    { icon: Gift, text: 'Exclusive subscriber discounts' },
-    { icon: ChefHat, text: 'Chef-approved home recipes' },
-];
 
 export const Newsletter = () => {
     const [email, setEmail] = useState('');
@@ -22,7 +16,7 @@ export const Newsletter = () => {
     };
 
     return (
-        <section className="bg-white pt-4 pb-14 lg:pb-20 overflow-hidden">
+        <section className="bg-white pt-0 pb-8 lg:pb-10 overflow-hidden">
             <div className="container-custom">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
@@ -38,68 +32,9 @@ export const Newsletter = () => {
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" />
                     <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-300/10 rounded-full blur-[100px] -ml-24 -mb-24 pointer-events-none" />
 
-                    <div className="relative z-10 grid lg:grid-cols-2 gap-0 min-h-[550px]">
-                        {/* LEFT: Copy */}
-                        <div className="flex flex-col justify-center p-12 lg:p-16 xl:p-20 space-y-8">
-                            <div>
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.3em] px-4 py-2 rounded-full mb-8 shadow-lg"
-                                >
-                                    <Sparkles size={14} className="text-amber-300" />
-                                    VIP Access Only
-                                </motion.div>
-                                <motion.h2
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.1 }}
-                                    className="text-5xl lg:text-7xl font-black text-white leading-[1] tracking-tighter"
-                                >
-                                    Get the Best <br />
-                                    <span className="text-amber-200">Kits First.</span>
-                                </motion.h2>
-                            </div>
-
-                            <motion.p
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.2 }}
-                                className="text-white/80 text-lg lg:text-xl font-medium leading-relaxed max-w-md"
-                            >
-                                Join our inner circle for weekly recipes, secret discounts, and early access to limited edition boxes.
-                            </motion.p>
-
-                            <motion.ul
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.3 }}
-                                className="space-y-4"
-                            >
-                                {perks.map((perk, i) => {
-                                    const Icon = perk.icon;
-                                    return (
-                                        <motion.li
-                                            key={i}
-                                            whileHover={{ x: 5 }}
-                                            className="flex items-center gap-4 text-white font-bold text-base group cursor-default"
-                                        >
-                                            <div className="w-10 h-10 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-white group-hover:text-orange-600 transition-all duration-300 shadow-lg">
-                                                <Icon size={18} className="transition-colors group-hover:text-orange-600" />
-                                            </div>
-                                            <span className="opacity-90 group-hover:opacity-100 transition-opacity">{perk.text}</span>
-                                        </motion.li>
-                                    );
-                                })}
-                            </motion.ul>
-                        </div>
-
-                        {/* RIGHT: Form */}
-                        <div className="flex items-center justify-center p-8 lg:p-16 xl:p-20">
+                    <div className="relative z-10 flex items-center justify-center min-h-[400px] py-12 lg:py-16">
+                        {/* Form */}
+                        <div className="flex items-center justify-center p-8 lg:p-16 xl:p-20 w-full">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 whileInView={{ opacity: 1, scale: 1 }}

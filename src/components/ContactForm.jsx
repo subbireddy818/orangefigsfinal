@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import {
-    Mail,
-    MapPin,
     MessageCircle,
     ArrowRight,
-    PhoneCall,
     CheckCircle2,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { toast } from "sonner";
-import { contactInfo } from "../data/mock";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const ContactForm = () => {
@@ -83,21 +79,21 @@ export const ContactForm = () => {
     };
 
     return (
-        <section id="contact" className="relative py-12 bg-white overflow-hidden">
+        <section id="contact" className="relative pt-0 pb-8 lg:pb-10 bg-white overflow-hidden">
 
             {/* Premium ambient lighting */}
             <div className="absolute top-[-200px] left-1/4 w-[700px] h-[700px] bg-orange-200/30 rounded-full blur-[180px]" />
             <div className="absolute bottom-[-150px] right-1/4 w-[600px] h-[600px] bg-orange-300/20 rounded-full blur-[180px]" />
 
             <div className="container-custom relative z-10">
-                <div className="grid lg:grid-cols-12 gap-20 items-start">
+                <div className="grid lg:grid-cols-12 gap-20 items-center">
 
                     {/* LEFT SIDE */}
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-5 space-y-14"
+                        className="lg:col-span-5 space-y-8"
                     >
                         <div className="space-y-8">
                             <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-orange-200 bg-orange-50 text-orange-600 font-bold text-xs tracking-widest uppercase">
@@ -116,28 +112,6 @@ export const ContactForm = () => {
                                 Experience the difference. Book a trial or send your
                                 questions — we respond within 24 hours.
                             </p>
-                        </div>
-
-                        <div className="space-y-10">
-                            {[
-                                { icon: Mail, label: "General Inquiries", value: contactInfo.email },
-                                { icon: PhoneCall, label: "Phone Support", value: contactInfo.phone },
-                                { icon: MapPin, label: "Visit Our Studio", value: contactInfo.address },
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-center gap-6 group">
-                                    <div className="w-14 h-14 rounded-2xl bg-white border border-orange-100 shadow-sm flex items-center justify-center text-orange-500 transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white group-hover:-rotate-6">
-                                        <item.icon size={24} />
-                                    </div>
-                                    <div>
-                                        <div className="text-xs font-semibold text-gray-400 uppercase tracking-widest">
-                                            {item.label}
-                                        </div>
-                                        <div className="text-xl font-bold text-gray-900 group-hover:text-orange-500 transition-colors">
-                                            {item.value}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
                         </div>
                     </motion.div>
 

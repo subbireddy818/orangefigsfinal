@@ -59,10 +59,10 @@ export const Pricing = () => {
     };
 
     return (
-        <section id="pricing" className="py-14 lg:py-20 bg-white overflow-hidden relative">
+        <section id="pricing" className="pt-0 pb-8 lg:pb-12 bg-white overflow-hidden relative">
             <div className="container-custom relative z-10">
                 {/* Header */}
-                <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+                <div className="text-center max-w-2xl mx-auto mb-8 space-y-4">
                     <motion.span
                         initial={{ opacity: 0, y: -10 }}
                         whileInView={{ opacity: 1, y: 0 }}

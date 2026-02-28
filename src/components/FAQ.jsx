@@ -105,10 +105,10 @@ export const FAQ = () => {
     const half = Math.ceil(faqData.length / 2);
 
     return (
-        <section className="py-14 lg:py-12 bg-white overflow-hidden relative">
+        <section className="pt-0 pb-8 lg:pb-10 bg-white overflow-hidden relative">
             <div className="container-custom">
                 {/* Header */}
-                <div className="text-center max-w-2xl mx-auto mb-10 space-y-4">
+                <div className="text-center max-w-2xl mx-auto mb-6 space-y-4">
                     <motion.span
                         initial={{ opacity: 0, y: -10 }}
                         whileInView={{ opacity: 1, y: 0 }}

@@ -86,11 +86,11 @@ export const Services = () => {
     };
 
     return (
-        <section id="classes" className="bg-white py-14 lg:py-20 font-andes-rounded">
+        <section id="classes" className="bg-white pt-0 pb-8 lg:pb-12 font-andes-rounded">
             <div className="container-custom">
 
                 {/* Section Header */}
-                <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+                <div className="text-center max-w-2xl mx-auto mb-8 space-y-4">
                     <motion.span
                         initial={{ opacity: 0, y: -10 }}
                         whileInView={{ opacity: 1, y: 0 }}

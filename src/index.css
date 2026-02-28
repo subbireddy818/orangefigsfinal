@@ -223,9 +223,9 @@
     animation: shimmer 3s linear infinite;
 }
 
-/* Section Padding */
+/* Section Padding — no top padding, minimal bottom */
 .section-padding {
-    @apply py-16 lg:py-24;
+    @apply pt-0 pb-6 lg:pb-10;
 }
 
 /* Container */

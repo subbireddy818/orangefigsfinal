@@ -75,12 +75,12 @@ export const SocialVideos = () => {
     };
 
     return (
-        <section className="py-16 bg-white overflow-hidden relative">
+        <section className="pt-0 pb-8 lg:pb-10 bg-white overflow-hidden relative">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-50/50 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="container-custom">
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                <div className="text-center max-w-3xl mx-auto mb-6 space-y-4">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}

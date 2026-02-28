@@ -59,14 +59,15 @@ body {
     }
 }
 
-/* Section Padding */
+/* Section Padding — no top padding, minimal bottom */
 .section-padding {
-    padding: 3.5rem 0;
+    padding-top: 0;
+    padding-bottom: 1.5rem;
 }
 
 @media (min-width: 1024px) {
     .section-padding {
-        padding: 5rem 0;
+        padding-bottom: 2.5rem;
     }
 }
 

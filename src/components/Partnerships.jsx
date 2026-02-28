@@ -31,11 +31,11 @@ const partners = [
 
 export const Partnerships = () => {
     return (
-        <section className="relative py-12 bg-white overflow-hidden">
+        <section className="relative pt-0 pb-8 lg:pb-10 bg-white overflow-hidden">
             <div className="container-custom relative z-10">
 
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16">
+                <div className="text-center max-w-3xl mx-auto mb-8">
                     <h2 className="text-4xl lg:text-6xl font-black tracking-tight leading-[0.95]">
                         Partnering with{" "}
                         <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">

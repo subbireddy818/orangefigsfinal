@@ -14,6 +14,7 @@ import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 import { RegistrationPopup } from './components/RegistrationPopup';
 import { Newsletter } from './components/Newsletter';
+import StartJourneyBanner from './components/StartJourneyBanner';
 import { Partnerships } from './components/Partnerships';
 import { SocialVideos } from './components/SocialVideos';
 import { FAQ } from './components/FAQ';
@@ -44,6 +45,7 @@ function App() {
                 <WhyChooseUs />
 
                 <Newsletter />
+                <StartJourneyBanner />
                 <Partnerships />
                 <Testimonials />
                 <Gallery />
