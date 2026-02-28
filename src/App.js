@@ -13,7 +13,6 @@ import { Testimonials } from './components/Testimonials';
 import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 import { RegistrationPopup } from './components/RegistrationPopup';
-import { Newsletter } from './components/Newsletter';
 import StartJourneyBanner from './components/StartJourneyBanner';
 import { Partnerships } from './components/Partnerships';
 import { SocialVideos } from './components/SocialVideos';
@@ -44,7 +43,6 @@ function App() {
                 <HowItWorks />
                 <WhyChooseUs />
 
-                <Newsletter />
                 <StartJourneyBanner />
                 <Partnerships />
                 <Testimonials />

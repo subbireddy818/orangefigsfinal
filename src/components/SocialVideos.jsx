@@ -3,14 +3,16 @@ import { motion } from 'framer-motion';
 import { Instagram, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Video cards only (Instagram row removed)
-// Dummy placeholder — replace with your own MP4s later
 const socialVideos = [
-    { id: 1, src: '/hero-baking.mp4' },
-    { id: 2, src: '/hero-baking.mp4' },
-    { id: 3, src: '/hero-baking.mp4' },
-    { id: 4, src: '/hero-baking.mp4' },
-    { id: 5, src: '/hero-baking.mp4' },
-    { id: 6, src: '/hero-baking.mp4' },
+    { id: 1, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274787/IMG_0839_pjgvj2.mp4' },
+    { id: 2, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274826/IMG_0807_ocqxex.mp4' },
+    { id: 3, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274875/IMG_0837_wgrarx.mp4' },
+    { id: 4, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274915/IMG_0838_jx1d2h.mp4' },
+    { id: 5, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274997/IMG_0836_rcnagd.mp4' },
+    { id: 6, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772275005/IMG_0824_h2kxy8.mp4' },
+    { id: 7, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772275018/IMG_0823_ti3s2l.mp4' },
+    { id: 8, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772275027/IMG_0809_nnzfxc.mp4' },
+    { id: 9, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772275040/IMG_0808_ricrtt.mp4' },
 ];
 
 const VideoCard = ({ video, index }) => {
@@ -84,17 +86,17 @@ export const SocialVideos = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-orange-100 bg-orange-50/50 text-orange-600 font-black text-[10px] uppercase tracking-[0.3em] mb-2 shadow-sm"
+                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider mb-3 shadow-lg shadow-orange-200/50"
                     >
-                        <Instagram size={18} />
+                        <Instagram size={16} />
                         Live from the Kitchen
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="text-4xl lg:text-6xl font-black text-gray-900 tracking-tighter leading-[0.95]"
+                        className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-tight"
                     >
-                        Orange Figs <span className="gradient-text">Stories</span>
+                        Orange Figs <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">Stories</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}

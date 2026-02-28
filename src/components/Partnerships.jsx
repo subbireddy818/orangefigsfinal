@@ -35,10 +35,13 @@ export const Partnerships = () => {
             <div className="container-custom relative z-10">
 
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-8">
-                    <h2 className="text-4xl lg:text-6xl font-black tracking-tight leading-[0.95]">
+                <div className="text-center max-w-3xl mx-auto mb-8 space-y-4">
+                    <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-200/50">
+                        Our Partners
+                    </span>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
                         Partnering with{" "}
-                        <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
                             Industry Leaders
                         </span>
                     </h2>

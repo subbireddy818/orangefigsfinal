@@ -82,11 +82,11 @@ export const About = () => {
                         className="space-y-10"
                     >
                         <div className="space-y-6">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary font-bold text-xs uppercase tracking-[0.2em]">
+                            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-200/50">
                                 Our Philosophy
                             </div>
-                            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 leading-tight tracking-tight">
-                                Where Small Hands Create <span className="gradient-text">Big Flavor.</span>
+                            <h2 className="text-4xl lg:text-5xl font-black text-gray-900 leading-tight tracking-tight">
+                                Where Small Hands Create <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">Big Flavor.</span>
                             </h2>
                             <p className="text-xl text-subtle leading-relaxed italic border-l-4 border-primary pl-6">
                                 "Orange Figs was born from a simple belief: every child is an artist, and the kitchen is the most flavorful studio."

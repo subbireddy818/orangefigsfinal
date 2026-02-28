@@ -95,7 +95,7 @@ export const Services = () => {
                         initial={{ opacity: 0, y: -10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-block text-xs font-black uppercase tracking-[0.2em] text-orange-600 bg-orange-50 border border-orange-200/50 px-4 py-2 rounded-full"
+                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-200/50"
                     >
                         Our Services
                     </motion.span>
@@ -104,9 +104,9 @@ export const Services = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl lg:text-5xl font-black text-gray-900 leading-tight tracking-tight"
+                        className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 leading-tight tracking-tight"
                     >
-                        Culinary Experiences for Every <span className="gradient-text">Young Chef</span>
+                        Culinary Experiences for Every <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">Young Chef</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}

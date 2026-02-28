@@ -88,13 +88,13 @@ export const WhyChooseUs = () => {
                 {/* HEADER */}
                 <div className="flex flex-col lg:flex-row justify-between gap-10 mb-20">
                     <div className="space-y-5">
-                        <span className="inline-flex items-center text-xs font-semibold uppercase tracking-widest text-orange-600 border border-orange-200 px-4 py-2 rounded-full">
+                        <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-200/50">
                             Why Choose Us
                         </span>
 
-                        <h2 className="text-4xl lg:text-6xl font-black tracking-tight leading-tight">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
                             The Orange Figs{" "}
-                            <span className="text-orange-500">Difference</span>
+                            <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">Difference</span>
                         </h2>
                     </div>
 

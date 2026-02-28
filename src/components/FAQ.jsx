@@ -113,7 +113,7 @@ export const FAQ = () => {
                         initial={{ opacity: 0, y: -10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-200 bg-orange-50 text-orange-600 font-bold text-xs uppercase tracking-[0.2em]"
+                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-200/50"
                     >
                         <HelpCircle size={14} />
                         FAQ
@@ -123,9 +123,9 @@ export const FAQ = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl lg:text-5xl font-black text-gray-900 tracking-tight"
+                        className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight"
                     >
-                        Got <span className="gradient-text">Questions?</span>
+                        Got <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">Questions?</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}

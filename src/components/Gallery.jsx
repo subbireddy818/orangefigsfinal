@@ -13,7 +13,7 @@ export const Gallery = () => {
     const nextRef = useRef(null);
 
     return (
-        <section id="gallery" className="pt-10 pb-6 lg:pb-8 bg-white overflow-hidden font-['Montserrat',sans-serif]">
+        <section id="gallery" className="pt-10 pb-0 bg-white overflow-hidden font-['Montserrat',sans-serif]">
             <div className="container-custom text-center mb-8">
                 <h2 className="text-[1.2rem] md:text-3xl font-black text-gray-900 tracking-tight max-w-4xl mx-auto leading-tight">
                     1,200+ Little Chefs learning and enjoying every month
@@ -25,7 +25,7 @@ export const Gallery = () => {
             </div>
 
             {/* Carousel Area */}
-            <div className="relative w-full overflow-hidden pt-4 pb-8">
+            <div className="relative w-full overflow-hidden pt-4 pb-0">
 
                 {/* Left/Right Fading Overlays */}
                 <div className="absolute top-0 bottom-0 left-0 w-8 md:w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
@@ -78,7 +78,7 @@ export const Gallery = () => {
                             swiper.params.navigation.nextEl = nextRef.current;
                         }}
                         modules={[EffectCoverflow, Autoplay, Navigation]}
-                        className="!py-12"
+                        className="!pt-6 !pb-2"
                     >
                         {[...galleryImages, ...galleryImages, ...galleryImages].map((image, i) => (
                             <SwiperSlide
