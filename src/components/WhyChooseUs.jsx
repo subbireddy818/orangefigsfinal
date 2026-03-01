@@ -90,11 +90,10 @@ export const WhyChooseUs = () => {
     return (
         <section id="why" className="bg-white pt-12 pb-0 border-t border-orange-100">
             <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,800;0,900;1,900&display=swap');
                 .why-heading {
-                    font-family: 'Playfair Display', serif;
+                    font-family: 'AndesRounded', sans-serif;
                     font-size: clamp(32px, 5vw, 52px);
-                    font-weight: 900;
+                    font-weight: 700;
                     line-height: 1.08;
                     letter-spacing: -0.025em;
                     color: #1a1020;
@@ -104,16 +103,15 @@ export const WhyChooseUs = () => {
                 }
                 .why-heading.on { opacity: 1; transform: translateY(0); }
                 .why-heading .grad {
-                    font-style: italic;
                     background: linear-gradient(130deg, #FF6B1A, #F43F8A);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
                 }
                 .why-label {
-                    font-family: 'Nunito', sans-serif;
+                    font-family: 'AndesRounded', sans-serif;
                     font-size: 11px;
-                    font-weight: 900;
+                    font-weight: 700;
                     letter-spacing: 0.22em;
                     text-transform: uppercase;
                     color: #FF6B1A;

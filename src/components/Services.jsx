@@ -65,7 +65,7 @@ function ServiceCard({ svc, index, isExpanded, onToggle, isMobile }) {
         <div style={{
           position: "absolute", top: isMobile ? 8 : 12, left: isMobile ? 8 : 12,
           background: svc.badgeColor, color: "#fff",
-          fontFamily: "'Nunito', sans-serif", fontSize: isMobile ? 7 : 10, fontWeight: 900,
+          fontFamily: "'AndesRounded', sans-serif", fontSize: isMobile ? 7 : 10, fontWeight: 500,
           letterSpacing: "0.12em", textTransform: "uppercase",
           padding: isMobile ? "3px 6px" : "5px 12px", borderRadius: 999,
         }}>
@@ -84,8 +84,8 @@ function ServiceCard({ svc, index, isExpanded, onToggle, isMobile }) {
       }}>
         {/* Title */}
         <h3 style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: isMobile ? 13 : 22, fontWeight: 800, color: "#1a1020",
+          fontFamily: "'AndesRounded', sans-serif",
+          fontSize: isMobile ? 13 : 22, fontWeight: 500, color: "#1a1020",
           letterSpacing: "-0.02em", lineHeight: 1.25, marginBottom: isMobile ? 6 : 12,
         }}>
           {svc.title}
@@ -93,8 +93,8 @@ function ServiceCard({ svc, index, isExpanded, onToggle, isMobile }) {
 
         {/* Desc - truncated on mobile when collapsed */}
         <p style={{
-          fontFamily: "'Nunito', sans-serif",
-          fontSize: isMobile ? 10 : 13.5, fontWeight: 600, color: "#7a7f99",
+          fontFamily: "'AndesRounded', sans-serif",
+          fontSize: isMobile ? 10 : 13.5, fontWeight: 500, color: "#7a7f99",
           lineHeight: 1.6, marginBottom: isMobile ? 8 : 18,
         }}>
           {isMobile && !isExpanded ? truncatedDesc : svc.desc}
@@ -106,8 +106,8 @@ function ServiceCard({ svc, index, isExpanded, onToggle, isMobile }) {
             {svc.bullets.map((b, i) => (
               <li key={i} style={{
                 display: "flex", alignItems: "flex-start", gap: 6,
-                fontFamily: "'Nunito', sans-serif",
-                fontSize: isMobile ? 9 : 13, fontWeight: 700, color: "#4a4f6a", lineHeight: 1.4,
+                fontFamily: "'AndesRounded', sans-serif",
+                fontSize: isMobile ? 9 : 13, fontWeight: 500, color: "#4a4f6a", lineHeight: 1.4,
               }}>
                 <span style={{ width: isMobile ? 4 : 6, height: isMobile ? 4 : 6, borderRadius: "50%", background: svc.wave1, flexShrink: 0, marginTop: 4 }} />
                 {b}
@@ -125,7 +125,7 @@ function ServiceCard({ svc, index, isExpanded, onToggle, isMobile }) {
               background: "none",
               border: "none",
               padding: 0,
-              fontFamily: "'Nunito', sans-serif",
+              fontFamily: "'AndesRounded', sans-serif",
               fontSize: 9,
               fontWeight: 800,
               color: svc.badgeColor,
@@ -192,7 +192,6 @@ export const Services = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,800;0,900;1,900&display=swap');
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(32px); }
           to   { opacity: 1; transform: translateY(0); }
@@ -211,9 +210,9 @@ export const Services = () => {
           .svc-header { margin-bottom: 32px; }
         }
         .svc-label { 
-          font-family: 'Nunito', sans-serif; 
+          font-family: 'AndesRounded', sans-serif; 
           font-size: 11px; 
-          font-weight: 900; 
+          font-weight: 700; 
           letter-spacing: 0.22em; 
           text-transform: uppercase; 
           color: #FF6B1A; 
@@ -223,16 +222,15 @@ export const Services = () => {
           .svc-label { font-size: 10px; margin-bottom: 10px; }
         }
         .svc-title { 
-          font-family: 'Playfair Display', serif; 
+          font-family: 'AndesRounded', sans-serif; 
           font-size: clamp(28px, 5vw, 52px); 
-          font-weight: 900; 
+          font-weight: 700; 
           color: #1a1020; 
           letter-spacing: -0.025em; 
           line-height: 1.08; 
           margin-bottom: 16px; 
         }
         .svc-title .g { 
-          font-style: italic; 
           background: linear-gradient(130deg, #FF6B1A, #F43F8A); 
           -webkit-background-clip: text; 
           -webkit-text-fill-color: transparent; 
