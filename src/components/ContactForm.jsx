@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-    MessageCircle,
     ArrowRight,
     CheckCircle2,
 } from "lucide-react";
