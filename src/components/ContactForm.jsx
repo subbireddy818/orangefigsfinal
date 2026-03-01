@@ -8,6 +8,9 @@ import { Card } from "./ui/card";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Recipient email for contact form submissions
+const RECIPIENT_EMAIL = "go9346089096@gmail.com";
+
 export const ContactForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -45,27 +48,59 @@ export const ContactForm = () => {
 
         setIsSubmitting(true);
 
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-
-        setIsSubmitting(false);
-        setIsSubmitted(true);
-
-        toast.success("Inquiry Sent Successfully!", {
-            description: "We'll get back to you within 24 hours.",
-        });
-
-        // Auto-revert to form after 5 seconds
-        setTimeout(() => {
-            setIsSubmitted(false);
-            setFormData({
-                parentName: "",
-                email: "",
-                childName: "",
-                childAge: "",
-                selectedClass: "",
-                message: "",
+        try {
+            // Using FormSubmit.co - free email service, no signup required
+            const response = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    _subject: `New Inquiry from ${formData.parentName} - Orange Figs`,
+                    "Parent's Name": formData.parentName,
+                    "Email": formData.email,
+                    "Child's Name": formData.childName,
+                    "Child's Age": formData.childAge,
+                    "Message": formData.message,
+                    _template: "table",
+                }),
             });
-        }, 5000);
+
+            const result = await response.json();
+
+            if (result.success) {
+                console.log('Email sent successfully:', result);
+                
+                setIsSubmitting(false);
+                setIsSubmitted(true);
+
+                toast.success("Inquiry Sent Successfully!", {
+                    description: "We'll get back to you within 24 hours.",
+                });
+
+                // Auto-revert to form after 5 seconds
+                setTimeout(() => {
+                    setIsSubmitted(false);
+                    setFormData({
+                        parentName: "",
+                        email: "",
+                        childName: "",
+                        childAge: "",
+                        selectedClass: "",
+                        message: "",
+                    });
+                }, 5000);
+            } else {
+                throw new Error(result.message || "Failed to send");
+            }
+        } catch (error) {
+            console.error('Failed to send email:', error);
+            setIsSubmitting(false);
+            toast.error("Failed to send inquiry", {
+                description: "Please try again or contact us directly.",
+            });
+        }
     };
 
     const container = {

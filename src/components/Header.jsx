@@ -37,13 +37,12 @@ export const Header = () => {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 overflow-visible ${isScrolled
-                ? 'glass-header shadow-premium'
-                : 'bg-transparent'
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 overflow-visible bg-white ${isScrolled
+                ? 'shadow-premium'
+                : ''
                 }`}
         >
             <header
-                style={{ backdropFilter: isScrolled ? 'blur(20px)' : 'none' }}
                 className="max-w-[1440px] mx-auto px-6 lg:px-12 py-1.5"
             >
                 <div className="flex items-center justify-between min-h-[56px]">
@@ -52,8 +51,8 @@ export const Header = () => {
                         className="flex items-center gap-3 cursor-pointer group"
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     >
-                        <div className="relative -my-1">
-                            <img src={logo} alt="Logo" className="w-14 h-14 lg:w-16 lg:h-16 object-contain relative z-10" />
+                        <div className="relative -my-10">
+                            <img src={logo} alt="Logo" className="w-28 h-28 lg:w-40 lg:h-40 object-contain relative z-10" />
                         </div>
                     </div>
 
@@ -64,7 +63,7 @@ export const Header = () => {
                                 key={item.label}
                                 href={`#${item.id}`}
                                 onClick={closeMenu}
-                                className="relative px-5 py-2 text-[13px] font-extrabold text-gray-600 hover:text-orange-600 transition-all duration-300 group"
+                                className="relative px-5 py-2 text-[18px] font-extrabold text-gray-600 hover:text-orange-600 transition-all duration-300 group"
                             >
                                 <span className="relative z-10">{item.label}</span>
                                 <span

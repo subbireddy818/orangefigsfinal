@@ -6,7 +6,7 @@ export const Hero = () => {
         <section className="hero-main">
 
             {/* ── Local video ── */}
-            <div className="hero-vid-wrap w-full h-screen overflow-hidden">
+            <div className="hero-vid-wrap w-full overflow-hidden">
                 <video
                     className="hero-vid w-full h-full object-cover"
                     autoPlay
@@ -14,10 +14,8 @@ export const Hero = () => {
                     loop
                     playsInline
                     preload="auto"
-                >
-                    {/* Meera birthday video from public/meera bday.mp4 */}
-                    <source src="/meera bday.mp4" type="video/mp4" />
-                </video>
+                    src="https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274787/IMG_0839_pjgvj2.mp4"
+                />
             </div>
 
             {/* ── 2 lines below video ── */}

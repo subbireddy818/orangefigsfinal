@@ -1366,11 +1366,13 @@ body {
 
 /* ── Outer section ── */
 .hero-main {
+    position: relative;
+    z-index: 0;
     width: 100%;
     height: 100vh;
     min-height: 600px;
-    padding-top: 82px;
-    /* clear fixed header */
+    padding-top: 70px;
+    /* space for fixed white header */
     background: #FFF7ED;
     display: flex;
     flex-direction: column;
@@ -1381,8 +1383,8 @@ body {
 /* ── Video container ── */
 .hero-vid-wrap {
     width: 100%;
-    flex: 0 0 85%;
-    /* takes 85% of the available height */
+    flex: 0 0 90%;
+    /* takes 90% of the available height */
     position: relative;
     background: #111;
     overflow: hidden;
