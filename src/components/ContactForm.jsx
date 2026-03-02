@@ -8,8 +8,10 @@ import { Card } from "./ui/card";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Recipient email for contact form submissions
-const RECIPIENT_EMAIL = "go9346089096@gmail.com";
+// Primary recipient email
+const PRIMARY_EMAIL = "go9346089096@gmail.com";
+// CC email (will also receive the form submission)
+const CC_EMAIL = "Chakradhar@theculinarylounge.com";
 
 export const ContactForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,7 +52,7 @@ export const ContactForm = () => {
 
         try {
             // Using FormSubmit.co - free email service, no signup required
-            const response = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+            const response = await fetch(`https://formsubmit.co/ajax/${PRIMARY_EMAIL}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -58,6 +60,7 @@ export const ContactForm = () => {
                 },
                 body: JSON.stringify({
                     _subject: `New Inquiry from ${formData.parentName} - Orange Figs`,
+                    _cc: CC_EMAIL,
                     "Parent's Name": formData.parentName,
                     "Email": formData.email,
                     "Child's Name": formData.childName,
