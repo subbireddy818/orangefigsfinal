@@ -1,244 +1,268 @@
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
-import {
-    UserCheck,
-    ShieldCheck,
-    HeartPulse,
-    Award,
-    Star,
-    ArrowUpRight,
-} from "lucide-react";
+import React from "react";
 
-const AnimatedCounter = ({ value, suffix }) => {
-    const count = useMotionValue(0);
-    const rounded = useTransform(count, (latest) => {
-        if (value % 1 !== 0) {
-            return latest.toFixed(1);
-        }
-        return Math.round(latest).toLocaleString();
-    });
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true });
+// ── ICONS ──────────────────────────────────────────────────────────────────
 
-    useEffect(() => {
-        if (inView) {
-            const controls = animate(count, value, { duration: 2, ease: "easeOut" });
-            return controls.stop;
-        }
-    }, [inView, value, count]);
+const PricingIcon = () => (
+  <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" width="54" height="54">
+    <path d="M7 24L27 7L47 24V46H34V32H20V46H7V24Z" fill="#D4A017" stroke="#8B6500" strokeWidth="1.5" strokeLinejoin="round"/>
+    <rect x="20" y="32" width="14" height="14" fill="#B8860B" stroke="#8B6500" strokeWidth="1"/>
+    <circle cx="39" cy="40" r="9" fill="#FBF0C0" stroke="#D4A017" strokeWidth="1.5"/>
+    <line x1="39" y1="33" x2="39" y2="47" stroke="#8B6500" strokeWidth="1.2"/>
+    <line x1="33" y1="37" x2="45" y2="37" stroke="#8B6500" strokeWidth="1.2"/>
+    <circle cx="33" cy="40" r="2.2" fill="#D4A017" stroke="#8B6500" strokeWidth="1"/>
+    <circle cx="45" cy="40" r="2.2" fill="#D4A017" stroke="#8B6500" strokeWidth="1"/>
+  </svg>
+);
 
-    return (
-        <span ref={ref}>
-            <motion.span>{rounded}</motion.span>
-            {suffix}
-        </span>
-    );
+const CertifiedIcon = () => (
+  <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" width="54" height="54">
+    <circle cx="27" cy="21" r="13" fill="#FBF0C0" stroke="#D4A017" strokeWidth="2"/>
+    <circle cx="27" cy="21" r="9.5" fill="#D4A017" stroke="#8B6500" strokeWidth="1.5"/>
+    <path d="M21 23.5L27 17L33 23.5V30H30V25H24V30H21V23.5Z" fill="#8B6500"/>
+    <path d="M18 33L21 41L27 37L33 41L36 33L27 37.5Z" fill="#D4A017" stroke="#8B6500" strokeWidth="1"/>
+    <circle cx="19.5" cy="21" r="1.5" fill="#8B6500"/>
+    <circle cx="34.5" cy="21" r="1.5" fill="#8B6500"/>
+  </svg>
+);
+
+const FinancingIcon = () => (
+  <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" width="54" height="54">
+    <rect x="9" y="8" width="25" height="31" rx="2" fill="#FBF0C0" stroke="#D4A017" strokeWidth="1.5"/>
+    <rect x="17" y="5" width="9" height="6" rx="1.5" fill="#D4A017" stroke="#8B6500" strokeWidth="1"/>
+    <rect x="14" y="18" width="13" height="1.5" rx="0.75" fill="#8B6500"/>
+    <rect x="14" y="23" width="9" height="1.5" rx="0.75" fill="#8B6500"/>
+    <rect x="14" y="28" width="11" height="1.5" rx="0.75" fill="#8B6500"/>
+    <circle cx="38" cy="40" r="10" fill="#D4A017" stroke="#8B6500" strokeWidth="2"/>
+    <circle cx="38" cy="40" r="6.5" fill="#FBF0C0"/>
+    <text x="38" y="44.5" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#8B6500" fontFamily="Georgia,serif">$</text>
+  </svg>
+);
+
+const SatisfactionIcon = () => (
+  <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" width="54" height="54">
+    <circle cx="12" cy="19" r="5.5" fill="#FBF0C0" stroke="#D4A017" strokeWidth="1.5"/>
+    <path d="M4 38C4 32 7.5 30 12 30" stroke="#D4A017" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+    <circle cx="42" cy="19" r="5.5" fill="#FBF0C0" stroke="#D4A017" strokeWidth="1.5"/>
+    <path d="M50 38C50 32 46.5 30 42 30" stroke="#D4A017" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+    <circle cx="27" cy="17" r="7" fill="#D4A017" stroke="#8B6500" strokeWidth="1.5"/>
+    <path d="M15 38C15 31 19.5 28 27 28C34.5 28 39 31 39 38" stroke="#8B6500" strokeWidth="2" strokeLinecap="round" fill="none"/>
+    <path d="M27 5L28.8 10.5H34.5L30 13.8L31.8 19.3L27 16.2L22.2 19.3L24 13.8L19.5 10.5H25.2L27 5Z" fill="#D4A017" stroke="#8B6500" strokeWidth="0.5"/>
+  </svg>
+);
+
+// ── FEATURE ITEM ───────────────────────────────────────────────────────────
+
+const FeatureItem = ({ icon, title, description, isFirst = false }) => (
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "56px 1fr",
+      gap: 14,
+      alignItems: "start",
+      padding: "28px 0",
+      borderTop: isFirst ? "none" : "1px solid #c5bbb0",
+    }}
+  >
+    <div
+      style={{
+        width: 56,
+        height: 56,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
+      }}
+    >
+      {icon}
+    </div>
+    <div>
+      <h3
+        style={{
+          fontFamily: "'Playfair Display', serif",
+          fontSize: 19,
+          fontWeight: 700,
+          color: "#1a1a1a",
+          marginBottom: 8,
+          lineHeight: 1.2,
+        }}
+      >
+        {title}
+      </h3>
+      <p style={{ fontSize: 14, color: "#666", lineHeight: 1.6 }}>
+        {description}
+      </p>
+    </div>
+  </div>
+);
+
+// ── CTA LINK ───────────────────────────────────────────────────────────────
+
+const CtaLink = ({ href = "#", children }) => {
+  const [hovered, setHovered] = React.useState(false);
+  return (
+    <a
+      href={href}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: hovered ? 9 : 5,
+        fontSize: 15,
+        fontWeight: 600,
+        color: "#8B1A1A",
+        textDecoration: "none",
+        transition: "gap 0.2s ease",
+      }}
+    >
+      {children}
+    </a>
+  );
 };
 
-const reasons = [
-    {
-        id: 1,
-        icon: UserCheck,
-        number: "01",
-        title: "Expert Instructors",
-        description:
-            "Guided by Michelin-experienced chefs who specialise in child development. Certified, passionate, and dedicated to every young chef.",
-        image:
-            "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80",
-    },
-    {
-        id: 2,
-        icon: ShieldCheck,
-        number: "02",
-        title: "Safety First",
-        description:
-            "State-of-the-art kitchen with induction heating, age-appropriate tools, and strict hygiene standards.",
-    },
-    {
-        id: 3,
-        icon: HeartPulse,
-        number: "03",
-        title: "Healthy Habits",
-        description:
-            "We cultivate a love for fresh, whole ingredients and lifelong nutritional literacy.",
-    },
-    {
-        id: 4,
-        icon: Award,
-        number: "04",
-        title: "Award-Winning Curriculum",
-        description:
-            "Recognised nationally for blending creativity, nutrition, and technique.",
-    },
-];
-
-const stats = [
-    { value: 1200, suffix: "+", label: "Students" },
-    { value: 15, suffix: "+", label: "Chefs" },
-    { value: 4.9, suffix: " / 5", label: "Rating" },
-    { value: 50, suffix: "+", label: "Workshops" },
-    { value: 6, suffix: " yrs", label: "Excellence" },
-];
+// ── MAIN COMPONENT ─────────────────────────────────────────────────────────
 
 export const WhyChooseUs = () => {
-    const [visible, setVisible] = useState(false);
+  return (
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600&display=swap');
+      `}</style>
 
-    useEffect(() => {
-        setTimeout(() => setVisible(true), 100);
-    }, []);
+      <section
+        id="why"
+        style={{
+          background: "#f0ebe4",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontFamily: "'Source Sans 3', sans-serif",
+          color: "#1a1a1a",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1140,
+            width: "100%",
+            padding: "50px 48px",
+          }}
+        >
+          {/* Section Label */}
+          <p style={{ fontSize: 14, color: "#555", marginBottom: 20 }}>
+            / Why Razor?
+          </p>
 
-    return (
-        <section id="why" className="bg-white pt-12 pb-0 border-t border-orange-100">
-            <style>{`
-                .why-heading {
-                    font-family: 'AndesRounded', sans-serif;
-                    font-size: clamp(32px, 5vw, 52px);
-                    font-weight: 700;
-                    line-height: 1.08;
-                    letter-spacing: -0.025em;
-                    color: #1a1020;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
-                }
-                .why-heading.on { opacity: 1; transform: translateY(0); }
-                .why-heading .grad {
-                    background: linear-gradient(130deg, #FF6B1A, #F43F8A);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-                .why-label {
-                    font-family: 'AndesRounded', sans-serif;
-                    font-size: 11px;
-                    font-weight: 700;
-                    letter-spacing: 0.22em;
-                    text-transform: uppercase;
-                    color: #FF6B1A;
-                    opacity: 0;
-                    transform: translateY(12px);
-                    transition: all 0.6s ease 0.15s;
-                    margin-bottom: 14px;
-                    display: inline-block;
-                }
-                .why-label.on { opacity: 1; transform: translateY(0); }
-            `}</style>
-            <div className="container-custom">
+          {/* 
+            Main grid — 3 columns:
+            Col 1 (left block): text + Competitive/Certified features
+            Col 2 (right col): Easy Financing + 100% Satisfaction
+            Vertical line = border-left on right col
+          */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "2.4fr 1fr",
+              gap: 0,
+              alignItems: "stretch",
+            }}
+          >
 
-                {/* HEADER */}
-                <div className="flex flex-col lg:flex-row justify-between gap-10 mb-20">
-                    <div className="space-y-4">
-                        <p className={`why-label ${visible ? "on" : ""}`}>Why Choose Us</p>
-                        <h2 className={`why-heading ${visible ? "on" : ""}`}>
-                            The Orange Figs <span className="grad">Difference</span>
-                        </h2>
-                    </div>
+            {/* ── LEFT BLOCK ── */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 0,
+                alignItems: "start",
+              }}
+            >
+              {/* Text Column */}
+              <div style={{ paddingRight: 40 }}>
+                <h2
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "clamp(42px, 5vw, 68px)",
+                    fontWeight: 800,
+                    lineHeight: 1.04,
+                    color: "#1a1a1a",
+                    marginBottom: 24,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  The Razor<br />Difference
+                </h2>
 
-                    <p className="text-gray-500 max-w-md font-semibold text-lg leading-relaxed">
-                        We don’t just teach cooking — we build confidence,
-                        creativity, and habits that last a lifetime.
-                        And we do it all with a dash of fun and a sprinkle of magic!
-                        Our secret ingredient? Passion. We believe that cooking is an art form, a science, and a way of life.
-                        We’re here to share that passion with the next generation of culinary artists.
-                    </p>
+                <p
+                  style={{
+                    fontSize: 15,
+                    color: "#555",
+                    lineHeight: 1.65,
+                    marginBottom: 32,
+                  }}
+                >
+                  For over a decade, we've been a proud service provider,
+                  earning and maintaining the trust of the community in
+                  Saskatoon, Martensville, Warman, and surrounding areas.
+                </p>
+
+                <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+                  <CtaLink href="#">Call Now ›</CtaLink>
+                  <CtaLink href="#">Book Free Estimate ›</CtaLink>
                 </div>
+              </div>
 
-                {/* GRID */}
-                <div className="grid lg:grid-cols-12 gap-6">
-
-                    {/* FEATURE CARD */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="lg:col-span-5 rounded-3xl overflow-hidden relative group min-h-[400px] lg:min-h-[480px] will-change-transform"
-                    >
-                        <img
-                            src={reasons[0].image}
-                            alt=""
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
-                        <div className="absolute inset-0 p-10 flex flex-col justify-between text-white">
-                            <div className="flex justify-between items-center">
-                                <span className="text-7xl font-black text-white/10">
-                                    01
-                                </span>
-                                <div className="w-14 h-14 bg-orange-500 rounded-xl flex items-center justify-center shadow-lg">
-                                    <UserCheck size={26} />
-                                </div>
-                            </div>
-
-                            <div className="space-y-4">
-                                <div className="flex gap-1">
-                                    {[...Array(5)].map((_, i) => (
-                                        <Star key={i} size={14} className="fill-amber-400 text-amber-400" />
-                                    ))}
-                                </div>
-
-                                <h3 className="text-3xl font-bold">
-                                    {reasons[0].title}
-                                </h3>
-
-                                <p className="text-white/80 text-sm leading-relaxed">
-                                    {reasons[0].description}
-                                </p>
-
-                                <div className="inline-flex items-center gap-2 text-orange-400 text-sm font-semibold uppercase tracking-wide">
-                                    Meet The Team <ArrowUpRight size={18} />
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* OTHER CARDS */}
-                    <div className="lg:col-span-7 grid gap-6">
-                        {reasons.slice(1).map((reason, index) => {
-                            const Icon = reason.icon;
-                            return (
-                                <motion.div
-                                    key={reason.id}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="bg-white border border-gray-100 rounded-2xl p-8 flex gap-6 items-start hover:border-orange-200 transition-all"
-                                >
-                                    <div className="w-14 h-14 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center">
-                                        <Icon size={26} />
-                                    </div>
-
-                                    <div className="space-y-2">
-                                        <h3 className="text-xl font-bold text-gray-900">
-                                            {reason.title}
-                                        </h3>
-                                        <p className="text-gray-500 text-sm leading-relaxed max-w-lg">
-                                            {reason.description}
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            );
-                        })}
-                    </div>
-                </div>
-
-                {/* STATS */}
-                <div className="mt-16 grid grid-cols-2 md:grid-cols-5 gap-6 border-t border-orange-100 pt-12">
-                    {stats.map((stat, i) => (
-                        <div key={i} className="text-center">
-                            <div className="text-3xl font-black text-orange-600">
-                                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                            </div>
-                            <div className="text-xs uppercase tracking-widest text-gray-400 mt-2">
-                                {stat.label}
-                            </div>
-                        </div>
-                    ))}
-                </div>
+              {/* Middle Features: Competitive + Certified — offset down */}
+              <div style={{ paddingTop: 100, paddingRight: 32, paddingLeft: 40, marginLeft: 0 }}>
+                <FeatureItem
+                  isFirst
+                  icon={<PricingIcon />}
+                  title="Competitive Pricing"
+                  description={<>Experience quality without<br />breaking the bank—we offer<br />fair and competitive pricing.</>}
+                />
+                <FeatureItem
+                  icon={<CertifiedIcon />}
+                  title="Certified Experts"
+                  description={<>Choose Razor for proven<br />excellence backed by<br />certified professionals.</>}
+                />
+              </div>
             </div>
-        </section>
-    );
+
+            {/* ── RIGHT COL: starts from top, single vertical line ── */}
+            <div style={{ borderLeft: "1px solid #b0a89e", paddingLeft: 32, paddingBottom: 20, paddingTop: 40 }}>
+              <FeatureItem
+                isFirst
+                icon={<FinancingIcon />}
+                title="Easy Financing"
+                description={
+                  <>
+                    Don't let budget constraints stop you—explore our hassle-free{" "}
+                    <a href="#" style={{ color: "#8B1A1A", textDecoration: "underline" }}>
+                      Financing
+                    </a>{" "}
+                    options.
+                  </>
+                }
+              />
+              <FeatureItem
+                icon={<SatisfactionIcon />}
+                title="100% Satisfaction"
+                description={
+                  <>
+                    Don't just take our word for it—
+                    <a href="#" style={{ color: "#8B1A1A", textDecoration: "underline" }}>
+                      see
+                    </a>{" "}
+                    what Homeowners of Saskatoon say about Razor.
+                  </>
+                }
+              />
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </>
+  );
 };
+
+export default WhyChooseUs;
