@@ -10,8 +10,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // Primary recipient email
 const PRIMARY_EMAIL = "go9346089096@gmail.com";
-// CC email (will also receive the form submission)
-const CC_EMAIL = "Chakradhar@theculinarylounge.com";
+// CC emails (will also receive the form submission)
+const CC_EMAILS = "Chakradhar@theculinarylounge.com,gopi@theculinarylounge.com,hello@theculinarylounge.com";
 
 export const ContactForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,7 +60,7 @@ export const ContactForm = () => {
                 },
                 body: JSON.stringify({
                     _subject: `New Inquiry from ${formData.parentName} - Orange Figs`,
-                    _cc: CC_EMAIL,
+                    _cc: CC_EMAILS,
                     "Parent's Name": formData.parentName,
                     "Email": formData.email,
                     "Child's Name": formData.childName,
