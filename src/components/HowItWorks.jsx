@@ -2,34 +2,39 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ClipboardList, Package, ChefHat, PartyPopper } from 'lucide-react';
 
+// Brand color palette
 const steps = [
     {
         id: 1,
         icon: ClipboardList,
         title: 'Subscribe',
         description: 'Pick a monthly, quarterly, or annual plan that suits your family best. Quick signup — takes under 2 minutes.',
-        color: '#F97316',
+        color: '#FA4A38',
+        light: '#FFE5E2',
     },
     {
         id: 2,
         icon: Package,
         title: 'Receive Your Kit',
         description: 'A beautifully packaged box arrives at your door with recipes, tools, pre-measured ingredients, and access to video tutorials.',
-        color: '#EA580C',
+        color: '#FCAB52',
+        light: '#FFF4DC',
     },
     {
         id: 3,
         icon: ChefHat,
         title: 'Cook Together',
         description: 'Follow the step-by-step recipe cards as a family. Each kit is designed for kids aged 4–17 with clear, illustrated instructions.',
-        color: '#D97706',
+        color: '#3BC7D5',
+        light: '#E0F7FA',
     },
     {
         id: 4,
         icon: PartyPopper,
         title: 'Share & Celebrate',
         description: 'Enjoy your creation together! Share photos, earn badges, and join our online community of young chefs around the world.',
-        color: '#F59E0B',
+        color: '#74B842',
+        light: '#E8F5E0',
     },
 ];
 
@@ -41,7 +46,7 @@ export const HowItWorks = () => {
     }, []);
 
     return (
-        <section id="how-it-works" className="pt-14 lg:pt-20 pb-8 lg:pb-12 bg-[#FFFBF5] overflow-hidden">
+        <section id="how-it-works" className="pt-14 lg:pt-20 pb-8 lg:pb-12 bg-white overflow-hidden">
             <style>{`
                 .hiw-heading {
                     font-family: 'AndesRounded', system-ui, sans-serif;
@@ -58,7 +63,7 @@ export const HowItWorks = () => {
                 .hiw-heading.on { opacity: 1; transform: translateY(0); }
 
                 .hiw-heading .grad {
-                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
+                    background: linear-gradient(135deg, #FA4A38, #FCAB52);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
@@ -70,7 +75,7 @@ export const HowItWorks = () => {
                     font-weight: 700;
                     letter-spacing: 0.18em;
                     text-transform: uppercase;
-                    color: #FF6B1A;
+                    color: #FA4A38;
                     opacity: 0;
                     transform: translateY(12px);
                     transition: all 0.6s ease 0.35s;
@@ -89,9 +94,9 @@ export const HowItWorks = () => {
 
                 {/* Timeline — vertical on mobile, horizontal on desktop */}
                 <div className="relative max-w-4xl mx-auto pl-8 lg:pl-0">
-                    {/* Connecting line */}
-                    <div className="hidden lg:block absolute top-[60px] left-[60px] right-[60px] h-[2px] bg-gradient-to-r from-orange-200 via-orange-300 to-amber-200 z-0" />
-                    <div className="lg:hidden absolute top-0 bottom-0 left-4 w-[2px] bg-gradient-to-b from-orange-200 via-orange-300 to-amber-200 z-0" />
+                    {/* Connecting line - brand colors gradient */}
+                    <div className="hidden lg:block absolute top-[60px] left-[60px] right-[60px] h-[3px] bg-gradient-to-r from-[#FA4A38] via-[#3BC7D5] to-[#74B842] z-0 rounded-full opacity-30" />
+                    <div className="lg:hidden absolute top-0 bottom-0 left-4 w-[3px] bg-gradient-to-b from-[#FA4A38] via-[#3BC7D5] to-[#74B842] z-0 rounded-full opacity-30" />
 
                     <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
                         {steps.map((step, index) => {
@@ -106,15 +111,21 @@ export const HowItWorks = () => {
                                     className="relative group"
                                 >
                                     {/* Connectivity indicators for mobile */}
-                                    <div className="lg:hidden absolute -left-6 top-[30px] w-4 h-4 rounded-full bg-orange-200 blur-sm animate-pulse" />
+                                    <div 
+                                        className="lg:hidden absolute -left-6 top-[30px] w-4 h-4 rounded-full blur-sm animate-pulse"
+                                        style={{ backgroundColor: step.color }}
+                                    />
 
                                     <div className="flex lg:flex-col items-start lg:items-center gap-6 lg:gap-6 lg:text-center">
-                                        {/* Circle with animated glow */}
+                                        {/* Circle with brand color background */}
                                         <div className="relative shrink-0">
                                             <motion.div
                                                 whileHover={{ scale: 1.1, rotate: 5 }}
-                                                className="w-[72px] h-[72px] rounded-2xl flex items-center justify-center bg-white border-2 shadow-premium group-hover:shadow-lg transition-all duration-500 relative z-10"
-                                                style={{ borderColor: `${step.color}33` }}
+                                                className="w-[72px] h-[72px] rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500 relative z-10"
+                                                style={{ 
+                                                    background: step.light,
+                                                    border: `2px solid ${step.color}40`
+                                                }}
                                             >
                                                 <Icon size={28} strokeWidth={2} style={{ color: step.color }} />
                                             </motion.div>
@@ -130,13 +141,16 @@ export const HowItWorks = () => {
                                             {/* Background pulse effect */}
                                             <div
                                                 className="absolute inset-0 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500"
-                                                style={{ backgroundColor: step.color }}
+                                                style={{ backgroundColor: step.light }}
                                             />
                                         </div>
 
                                         {/* Text Section */}
                                         <div className="space-y-2 pt-1">
-                                            <h3 className="text-xl font-black text-gray-900 tracking-tight leading-tight group-hover:text-orange-600 transition-colors">
+                                            <h3 
+                                                className="text-xl font-black tracking-tight leading-tight transition-colors"
+                                                style={{ color: step.color }}
+                                            >
                                                 {step.title}
                                             </h3>
                                             <p className="text-[15px] text-gray-500 leading-relaxed font-medium">
