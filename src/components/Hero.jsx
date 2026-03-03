@@ -1,5 +1,8 @@
 import React from "react";
 
+const YOUTUBE_VIDEO_ID = "yrjFbjoAHgo";
+const YOUTUBE_EMBED = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1`;
+
 const styles = `
   .hero-outer {
     font-family: 'AndesRounded', system-ui, sans-serif;
@@ -10,13 +13,32 @@ const styles = `
     position: relative;
     display: flex;
     align-items: center;
-    background: url('/6M7A6770%20(1).jpg') center/cover no-repeat;
+    overflow: hidden;
+  }
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-video iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100vh;
+    min-width: 177.78vh;
+    transform: translate(-50%, -50%);
   }
 
   .hero-outer::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 1;
     background: linear-gradient(90deg, rgba(26,18,11,0.55) 0%, rgba(26,18,11,0.2) 45%, rgba(26,18,11,0.05) 100%);
     pointer-events: none;
   }
@@ -121,6 +143,14 @@ function Hero() {
     <>
       <style>{styles}</style>
       <section className="hero-outer">
+        <div className="hero-video">
+          <iframe
+            src={YOUTUBE_EMBED}
+            title="Orange Figs hero video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
         <div className="hero-content">
           <h1 className="hero-title">A Space to Cook, Create, and Grow</h1>
           <p className="hero-sub">
