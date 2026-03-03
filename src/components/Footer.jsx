@@ -96,7 +96,7 @@ export const Footer = () => {
                     </div>
 
                     {/* Links */}
-                    <div className="lg:col-span-4 grid grid-cols-2 gap-8">
+                    <div className="lg:col-span-4 grid grid-cols-2 gap-6 sm:gap-8">
                         {footerLinks.map((group, i) => (
                             <div key={i} className="space-y-5">
                                 <h4 className="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em]">

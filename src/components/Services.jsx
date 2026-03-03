@@ -262,6 +262,12 @@ export const Services = () => {
             max-width: 100%;
           }
         }
+        @media (max-width: 480px) {
+          .svc-grid { 
+            grid-template-columns: 1fr; 
+            gap: 16px; 
+          }
+        }
       `}</style>
       <section id="classes" className="svc-root">
         <div className="svc-header">

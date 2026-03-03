@@ -129,49 +129,53 @@ const CtaLink = ({ href = "#", children, color }) => {
 
 // ── MAIN COMPONENT ─────────────────────────────────────────────────────────
 
+const whyStyles = `
+  .why-grid { display: grid; grid-template-columns: 2.4fr 1fr; gap: 0; align-items: stretch; }
+  .why-left { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: start; }
+  .why-right { border-left: 2px solid #f0e6dc; }
+  @media (max-width: 900px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .why-left { grid-template-columns: 1fr; }
+    .why-features { padding-top: 24px !important; }
+    .why-right { border-left: none; border-top: 2px solid #f0e6dc; padding-top: 24px !important; padding-left: 0 !important; }
+  }
+  @media (max-width: 768px) {
+    .why-wrap { padding: 24px 16px !important; }
+  }
+`;
+
 export const WhyChooseUs = () => {
   return (
-    <section
-      id="why"
-      style={{
-        background: "#FFFFFF",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontFamily: "'Source Sans 3', sans-serif",
-        color: "#1a1a1a",
-      }}
-    >
-      <div
+    <>
+      <style>{whyStyles}</style>
+      <section
+        id="why"
         style={{
-          maxWidth: 1140,
-          width: "100%",
-          padding: "clamp(30px, 5vw, 50px) clamp(16px, 4vw, 48px)",
+          background: "#FFFFFF",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontFamily: "'Source Sans 3', sans-serif",
+          color: "#1a1a1a",
         }}
       >
-        {/* Section Label */}
-        <p style={{ fontSize: "clamp(11px, 1.5vw, 14px)", color: colors.coral.main, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "clamp(12px, 2vw, 20px)" }}>
-          / Why Orange Figs?
-        </p>
-
         <div
+          className="why-wrap"
           style={{
-            display: "grid",
-            gridTemplateColumns: "2.4fr 1fr",
-            gap: 0,
-            alignItems: "stretch",
+            maxWidth: 1140,
+            width: "100%",
+            padding: "clamp(30px, 5vw, 50px) clamp(16px, 4vw, 48px)",
           }}
         >
+          {/* Section Label */}
+          <p style={{ fontSize: "clamp(11px, 1.5vw, 14px)", color: colors.coral.main, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "clamp(12px, 2vw, 20px)" }}>
+            / Why Orange Figs?
+          </p>
+
+          <div className="why-grid">
 
           {/* ── LEFT BLOCK ── */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 0,
-              alignItems: "start",
-            }}
-          >
+          <div className="why-left">
             {/* Text Column */}
             <div style={{ paddingRight: "clamp(12px, 3vw, 40px)" }}>
               <h2
@@ -206,7 +210,7 @@ export const WhyChooseUs = () => {
             </div>
 
             {/* Middle Features */}
-            <div style={{ paddingTop: "clamp(40px, 8vw, 100px)", paddingRight: "clamp(12px, 3vw, 32px)", paddingLeft: "clamp(12px, 3vw, 40px)" }}>
+            <div className="why-features" style={{ paddingTop: "clamp(40px, 8vw, 100px)", paddingRight: "clamp(12px, 3vw, 32px)", paddingLeft: "clamp(12px, 3vw, 40px)" }}>
               <FeatureItem
                 isFirst
                 icon={<ExpertIcon color={colors.coral} />}
@@ -224,7 +228,7 @@ export const WhyChooseUs = () => {
           </div>
 
           {/* ── RIGHT COL ── */}
-          <div style={{ borderLeft: "2px solid #f0e6dc", paddingLeft: "clamp(12px, 3vw, 32px)", paddingBottom: 20, paddingTop: "clamp(20px, 4vw, 40px)" }}>
+          <div className="why-right" style={{ paddingLeft: "clamp(12px, 3vw, 32px)", paddingBottom: 20, paddingTop: "clamp(20px, 4vw, 40px)" }}>
             <FeatureItem
               isFirst
               icon={<SafetyIcon color={colors.teal} />}
@@ -251,6 +255,7 @@ export const WhyChooseUs = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

@@ -178,12 +178,12 @@ export const SocialVideos = () => {
                 className="text-center mt-10"
             >
                 <a
-                    href="https://www.instagram.com/orangefigs/"
+                    href="https://www.instagram.com/orangefigsofficial/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 bg-gray-900 text-white px-8 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-orange-200 group"
                 >
-                    Follow @orangefigs
+                    Follow @orangefigsofficial
                     <Instagram size={18} className="group-hover:rotate-12 transition-transform" />
                 </a>
             </motion.div>
