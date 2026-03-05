@@ -83,7 +83,7 @@ export const RegistrationPopup = () => {
                 {/* Left side: Image */}
                 <div className="relative w-full md:w-1/2 h-40 md:h-full bg-gray-100 flex-shrink-0">
                     <img
-                        src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80"
+                        src="/ADI09926%20(1).jpg"
                         alt="Cooking"
                         className="w-full h-full object-cover"
                     />

@@ -84,37 +84,10 @@ export const SocialVideos = () => {
     return (
         <section className="pt-16 pb-8 lg:pb-10 bg-white overflow-hidden relative">
             <style>{`
-                .stories-heading {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: clamp(28px, 5vw, 46px);
-                    font-weight: 800;
-                    line-height: 1.1;
-                    letter-spacing: -0.03em;
-                    color: #1a1020;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
-                    margin-bottom: 16px;
-                }
-                .stories-heading.on { opacity: 1; transform: translateY(0); }
-                .stories-heading .grad {
-                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-                .stories-label {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: 14px;
-                    font-weight: 700;
-                    letter-spacing: 0.18em;
-                    text-transform: uppercase;
-                    color: #FF6B1A;
-                    opacity: 0;
-                    transform: translateY(12px);
-                    transition: all 0.6s ease 0.35s;
-                }
-                .stories-label.on { opacity: 1; transform: translateY(0); }
+                .section-heading { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s; margin-bottom: 16px; }
+                .section-heading.on { opacity: 1; transform: translateY(0); }
+                .section-label { opacity: 0; transform: translateY(12px); transition: all 0.6s ease 0.35s; }
+                .section-label.on { opacity: 1; transform: translateY(0); }
             `}</style>
 
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-50/50 rounded-full blur-[120px] pointer-events-none" />
@@ -122,10 +95,10 @@ export const SocialVideos = () => {
             <div className="container-custom">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-6">
-                    <h2 className={`stories-heading ${visible ? "on" : ""}`}>
+                    <h2 className={`section-heading ${visible ? "on" : ""}`}>
                         Orange Figs <span className="grad">Stories</span>
                     </h2>
-                    <p className={`stories-label ${visible ? "on" : ""}`}>Live from the Kitchen</p>
+                    <p className={`section-label ${visible ? "on" : ""}`}>Live from the Kitchen</p>
                     <p className="text-base text-gray-500 leading-relaxed mt-4" style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.6s ease 0.5s' }}>
                         Watch our latest moments from classes, camps, and celebrations.
                     </p>

@@ -48,48 +48,19 @@ export const HowItWorks = () => {
     return (
         <section id="how-it-works" className="pt-14 lg:pt-20 pb-8 lg:pb-12 bg-white overflow-hidden">
             <style>{`
-                .hiw-heading {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: clamp(32px, 6vw, 50px);
-                    font-weight: 800;
-                    line-height: 1.05;
-                    letter-spacing: -0.03em;
-                    color: #1a1020;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
-                    margin-bottom: 16px;
-                }
-                .hiw-heading.on { opacity: 1; transform: translateY(0); }
-
-                .hiw-heading .grad {
-                    background: linear-gradient(135deg, #FA4A38, #FCAB52);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-
-                .hiw-label {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: 14px;
-                    font-weight: 700;
-                    letter-spacing: 0.18em;
-                    text-transform: uppercase;
-                    color: #FA4A38;
-                    opacity: 0;
-                    transform: translateY(12px);
-                    transition: all 0.6s ease 0.35s;
-                }
-                .hiw-label.on { opacity: 1; transform: translateY(0); }
+                .section-heading { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s; margin-bottom: 16px; }
+                .section-heading.on { opacity: 1; transform: translateY(0); }
+                .section-label { opacity: 0; transform: translateY(12px); transition: all 0.6s ease 0.35s; }
+                .section-label.on { opacity: 1; transform: translateY(0); }
             `}</style>
 
             <div className="container-custom">
                 {/* Header */}
                 <div className="text-center max-w-2xl mx-auto mb-10">
-                    <h2 className={`hiw-heading ${visible ? "on" : ""}`}>
+                    <h2 className={`section-heading ${visible ? "on" : ""}`}>
                         How It <span className="grad">Works</span>
                     </h2>
-                    <p className={`hiw-label ${visible ? "on" : ""}`}>Four Simple Steps</p>
+                    <p className={`section-label ${visible ? "on" : ""}`}>Four Simple Steps</p>
                 </div>
 
                 {/* Timeline — vertical on mobile, horizontal on desktop */}

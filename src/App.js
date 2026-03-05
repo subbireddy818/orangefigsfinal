@@ -5,7 +5,6 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
-import { HowItWorks } from './components/HowItWorks';
 import { WhyChooseUs } from './components/WhyChooseUs';
 
 import { Gallery } from './components/Gallery';
@@ -40,7 +39,6 @@ function App() {
             <main>
                 <Hero />
                 <Services />
-                <HowItWorks />
                 <WhyChooseUs />
 
                 <StartJourneyBanner />

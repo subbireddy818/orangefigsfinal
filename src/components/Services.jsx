@@ -1,51 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const services = [
   {
     id: 1,
     badge: "BIRTHDAY CELEBRATIONS",
-    badgeColor: "#FF6B1A",
+    badgeColor: "#FA4A38",
     title: "Birthday Celebrations",
     desc: "Give your child a birthday celebration they'll remember for a lifetime. At Orange Figs, birthdays go beyond games and cake — they become immersive culinary experiences where kids cook, create, and celebrate together.",
     bullets: ["Themed, chef-guided cooking experiences", "A unique, interactive celebration format", "Premium, Stress-Free Hosting", "Meaningful Fun"],
-    wave1: "#FF6B1A", wave2: "#FF8C5A", wave3: "#FFD5BE",
-    img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80",
+    wave1: "#FA4A38", wave2: "#fc7a6c", wave3: "#fde0dd",
+    img: "/DSC05046.jpg",
   },
   {
     id: 2,
     badge: "WEEKEND KIDS CLUB",
-    badgeColor: "#0891B2",
+    badgeColor: "#B42A63",
     title: "Kids Cooking Club",
     desc: "A weekend cooking club where kids bond over global cuisines, build real skills, and make meaningful friendships. We encourage kids to experiment, make mistakes, learn techniques, and grow in confidence.",
     bullets: ["Exploration of world cuisines", "Kitchen skills and techniques", "Foundational cooking methods", "Ingredient awareness and flavour pairing"],
-    wave1: "#0891B2", wave2: "#22D3EE", wave3: "#CFFAFE",
-    img: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&q=80",
+    wave1: "#B42A63", wave2: "#d4507f", wave3: "#f5d0e0",
+    img: "/DSC01483.jpg",
   },
   {
     id: 3,
     badge: "SUMMER CAMP",
-    badgeColor: "#D97706",
+    badgeColor: "#3BC7D5",
     title: "Orange Figs Summer Camp",
     desc: "Where curious kids roll up their sleeves, try new flavours, experiment boldly, and discover what they're capable of in the kitchen. Hands-on, energetic, and designed to keep young minds engaged from day one.",
     bullets: ["2 weeks of structured culinary training", "Learning at premium restaurants", "Explore the world through food", "Skill-building, discipline & creativity"],
-    wave1: "#D97706", wave2: "#FBBF24", wave3: "#FEF3C7",
-    img: "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=600&q=80",
+    wave1: "#3BC7D5", wave2: "#72d9e3", wave3: "#d4f4f7",
+    img: "/DSC01863.jpg",
   },
   {
     id: 4,
     badge: "DEEP-DIVE LEARNING",
-    badgeColor: "#4F46E5",
+    badgeColor: "#366BC4",
     title: "Chef-Led Masterclasses",
     desc: "Focused, high-impact culinary experiences led by expert chefs and industry professionals. Children dive deep into a cuisine, technique, or theme — guided by world-class mentors who bring real industry knowledge.",
     bullets: ["Master one cuisine at a time", "MasterChef-level professionals", "Professional kitchen standards", "Go beyond basics — explore the craft"],
-    wave1: "#4F46E5", wave2: "#818CF8", wave3: "#E0E7FF",
-    img: "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=600&q=80",
+    wave1: "#366BC4", wave2: "#6a96d8", wave3: "#d6e4f7",
+    img: "/_VPC7540.JPG",
   },
 ];
 
 function ServiceCard({ svc, index, isExpanded, onToggle, isMobile }) {
   const truncatedDesc = svc.desc.substring(0, 60) + '...';
-  
+
   return (
     <div style={{
       position: "relative",
@@ -74,13 +74,13 @@ function ServiceCard({ svc, index, isExpanded, onToggle, isMobile }) {
       </div>
 
       {/* Body */}
-      <div style={{ 
-        padding: isMobile 
-          ? (isExpanded ? "12px 10px 120px" : "12px 10px 100px") 
-          : "28px 28px 200px", 
-        flex: 1, 
-        position: "relative", 
-        zIndex: 2 
+      <div style={{
+        padding: isMobile
+          ? (isExpanded ? "12px 10px 120px" : "12px 10px 100px")
+          : "28px 28px 200px",
+        flex: 1,
+        position: "relative",
+        zIndex: 2
       }}>
         {/* Title */}
         <h3 style={{
@@ -138,14 +138,14 @@ function ServiceCard({ svc, index, isExpanded, onToggle, isMobile }) {
             }}
           >
             {isExpanded ? "View Less" : "View More"}
-            <svg 
-              width="10" 
-              height="10" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke={svc.badgeColor} 
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke={svc.badgeColor}
               strokeWidth="3"
-              style={{ 
+              style={{
                 transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
                 transition: "transform 0.3s ease"
               }}
@@ -175,6 +175,9 @@ function ServiceCard({ svc, index, isExpanded, onToggle, isMobile }) {
 export const Services = () => {
   const [expandedCards, setExpandedCards] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => { setTimeout(() => setVisible(true), 100); }, []);
 
   React.useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -184,7 +187,7 @@ export const Services = () => {
   }, []);
 
   const toggleCard = (id) => {
-    setExpandedCards(prev => 
+    setExpandedCards(prev =>
       prev.includes(id) ? prev.filter(cardId => cardId !== id) : [...prev, id]
     );
   };
@@ -192,95 +195,77 @@ export const Services = () => {
   return (
     <>
       <style>{`
+        .section-heading { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s; }
+        .section-heading.on { opacity: 1; transform: translateY(0); }
+        .section-label { opacity: 0; transform: translateY(12px); transition: all 0.6s ease 0.35s; }
+        .section-label.on { opacity: 1; transform: translateY(0); }
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(32px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        .svc-root { 
-          background: #fffaf6; 
-          padding: 80px 40px 100px; 
+        .svc-root {
+          background: #fffaf6;
+          padding: 80px 40px 100px;
         }
         @media (max-width: 767px) {
-          .svc-root { 
-            padding: 50px 16px 60px; 
+          .svc-root {
+            padding: 50px 16px 60px;
           }
         }
         .svc-header { text-align: center; margin-bottom: 52px; }
         @media (max-width: 767px) {
           .svc-header { margin-bottom: 32px; }
         }
-        .svc-label { 
-          font-family: 'AndesRounded', sans-serif; 
-          font-size: 11px; 
-          font-weight: 700; 
-          letter-spacing: 0.22em; 
-          text-transform: uppercase; 
-          color: #FF6B1A; 
-          margin-bottom: 14px; 
-        }
+        .svc-header .section-label { margin-bottom: 14px; }
         @media (max-width: 767px) {
           .svc-label { font-size: 10px; margin-bottom: 10px; }
         }
-        .svc-title { 
-          font-family: 'AndesRounded', sans-serif; 
-          font-size: clamp(28px, 5vw, 52px); 
-          font-weight: 700; 
-          color: #1a1020; 
-          letter-spacing: -0.025em; 
-          line-height: 1.08; 
-          margin-bottom: 16px; 
-        }
-        .svc-title .g { 
-          background: linear-gradient(130deg, #FF6B1A, #F43F8A); 
-          -webkit-background-clip: text; 
-          -webkit-text-fill-color: transparent; 
-          background-clip: text; 
-        }
-        .svc-sub { 
-          font-family: 'Nunito', sans-serif; 
-          font-size: 16px; 
-          font-weight: 600; 
-          color: #9196b3; 
-          max-width: 560px; 
-          margin: 0 auto; 
-          line-height: 1.7; 
+        .svc-header .section-heading { margin-bottom: 16px; }
+        .svc-sub {
+          font-family: 'Nunito', sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+          color: #9196b3;
+          max-width: 560px;
+          margin: 0 auto;
+          line-height: 1.7;
         }
         @media (max-width: 767px) {
           .svc-sub { font-size: 14px; padding: 0 8px; }
         }
-        .svc-grid { 
-          display: grid; 
-          grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); 
-          gap: 24px; 
-          max-width: 1160px; 
-          margin: 0 auto; 
+        .svc-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+          gap: 24px;
+          max-width: 1160px;
+          margin: 0 auto;
         }
         @media (max-width: 767px) {
-          .svc-grid { 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 12px; 
+          .svc-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
             max-width: 100%;
           }
         }
         @media (max-width: 480px) {
-          .svc-grid { 
-            grid-template-columns: 1fr; 
-            gap: 16px; 
+          .svc-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
           }
         }
       `}</style>
       <section id="classes" className="svc-root">
         <div className="svc-header">
-          <p className="svc-label">What We Offer</p>
-          <h2 className="svc-title">Our <span className="g">Services</span></h2>
-          <p className="svc-sub">Culinary experiences for every young chef — from birthdays and weekend clubs to summer camps and masterclasses.</p>
+          <p className={`section-label ${visible ? "on" : ""}`}>What We Offer</p>
+          <h2 className={`section-heading ${visible ? "on" : ""}`}>Our <span className="grad">Services</span></h2>
+          <p className="svc-sub" style={{ opacity: visible ? 1 : 0, transition: "opacity 0.6s ease 0.5s" }}>Culinary experiences for every young chef — from birthdays and weekend clubs to summer camps and masterclasses.</p>
         </div>
         <div className="svc-grid">
           {services.map((svc, i) => (
-            <ServiceCard 
-              key={svc.id} 
-              svc={svc} 
-              index={i} 
+            <ServiceCard
+              key={svc.id}
+              svc={svc}
+              index={i}
               isExpanded={expandedCards.includes(svc.id)}
               onToggle={() => toggleCard(svc.id)}
               isMobile={isMobile}

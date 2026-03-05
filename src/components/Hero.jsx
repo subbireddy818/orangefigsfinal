@@ -1,7 +1,9 @@
 import React from "react";
 
-const YOUTUBE_VIDEO_ID = "yrjFbjoAHgo";
-const YOUTUBE_EMBED = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1`;
+const HERO_VIDEO_DESKTOP =
+  "https://res.cloudinary.com/dg5qkp09h/video/upload/v1772695162/horizontal_wlxpmg.mp4";
+const HERO_VIDEO_MOBILE =
+  "https://res.cloudinary.com/dg5qkp09h/video/upload/v1772695109/Verticals_odrnvs.mp4";
 
 const styles = `
   .hero-outer {
@@ -9,81 +11,76 @@ const styles = `
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
-    min-height: 100vh;
-    position: relative;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     overflow: hidden;
   }
   .hero-video {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  .hero-video video {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: 0;
+    object-fit: cover;
+    object-position: center top;
   }
-  .hero-video iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100vw;
-    height: 56.25vw;
-    min-height: 100vh;
-    min-width: 177.78vh;
-    transform: translate(-50%, -50%);
+  .hero-video-desktop {
+    display: block;
   }
-
-  .hero-outer::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(90deg, rgba(26,18,11,0.55) 0%, rgba(26,18,11,0.2) 45%, rgba(26,18,11,0.05) 100%);
-    pointer-events: none;
+  .hero-video-mobile {
+    display: none;
   }
 
   .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 80px 48px 80px clamp(48px, 8vw, 100px);
-    max-width: 560px;
+    display: none;
+  }
+  .hero-text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem 1.5rem;
   }
 
   .hero-title {
     font-family: 'AndesRounded', system-ui, sans-serif;
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     font-weight: 700;
-    line-height: 1.12;
+    line-height: 1.2;
     letter-spacing: -0.03em;
     color: #fff;
-    margin-bottom: 1.25rem;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.25), 0 4px 24px rgba(0,0,0,0.15);
+    margin: 0;
   }
 
   .hero-sub {
     font-family: 'AndesRounded', system-ui, sans-serif;
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
     font-weight: 600;
     letter-spacing: -0.01em;
-    color: rgba(255,255,255,0.95);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-    max-width: 420px;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.2);
+    color: rgba(255,255,255,0.9);
+    line-height: 1.4;
+    margin: 0;
   }
 
   .btn-explore {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     background: linear-gradient(135deg, #F97316 0%, #EA580C 50%, #C2410C 100%);
     color: #fff;
     text-decoration: none;
     border-radius: 9999px;
-    padding: 16px 36px;
+    padding: 10px 24px;
     font-family: 'AndesRounded', system-ui, sans-serif;
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     cursor: pointer;
@@ -107,33 +104,38 @@ const styles = `
   }
 
   @media (max-width: 768px) {
-    .hero-outer {
-      min-height: 100svh;
-      align-items: flex-end;
+    .hero-video-desktop {
+      display: none;
     }
-    .hero-outer::before {
-      background: linear-gradient(180deg, rgba(26,18,11,0.2) 0%, rgba(26,18,11,0.4) 40%, rgba(26,18,11,0.7) 100%);
+    .hero-video-mobile {
+      display: block;
+    }
+    .hero-outer {
+      height: 100svh;
+      height: 100dvh;
     }
     .hero-content {
-      padding: 80px 1.25rem 40px;
-      padding-bottom: max(40px, env(safe-area-inset-bottom));
+      padding: 0.75rem 1.25rem;
+      padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+      gap: 0.5rem;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
     }
     .hero-title {
-      font-size: clamp(1.75rem, 8vw, 2.5rem);
-      margin-bottom: 1rem;
+      font-size: clamp(1rem, 5vw, 1.25rem);
     }
     .hero-sub {
-      font-size: 0.9375rem;
-      margin-bottom: 1.5rem;
+      font-size: 0.8125rem;
     }
     .btn-explore {
-      padding: 14px 28px;
-      font-size: 0.9375rem;
+      padding: 8px 20px;
+      font-size: 0.875rem;
     }
   }
   @media (max-width: 480px) {
     .hero-content {
-      padding: 60px 1rem 32px;
+      padding: 0.5rem 1rem;
     }
   }
 `;
@@ -144,18 +146,32 @@ function Hero() {
       <style>{styles}</style>
       <section className="hero-outer">
         <div className="hero-video">
-          <iframe
-            src={YOUTUBE_EMBED}
+          <video
+            className="hero-video-desktop"
+            src={HERO_VIDEO_DESKTOP}
+            autoPlay
+            muted
+            loop
+            playsInline
             title="Orange Figs hero video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
+          />
+          <video
+            className="hero-video-mobile"
+            src={HERO_VIDEO_MOBILE}
+            autoPlay
+            muted
+            loop
+            playsInline
+            title="Orange Figs hero video"
           />
         </div>
         <div className="hero-content">
-          <h1 className="hero-title">A Space to Cook, Create, and Grow</h1>
-          <p className="hero-sub">
-            A thoughtfully curated culinary experience for growing minds.
-          </p>
+          <div className="hero-text">
+            <h1 className="hero-title">A Space to Cook, Create, and Grow</h1>
+            <p className="hero-sub">
+              A thoughtfully curated culinary experience for growing minds.
+            </p>
+          </div>
           <a href="#why" className="btn-explore">
             Know more
             <span className="btn-arrow" aria-hidden="true">

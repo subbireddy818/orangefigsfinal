@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // ── Testimonial data ──────────────────────────────────────────────
 const testimonials = [
@@ -190,9 +191,11 @@ export default function TestimonialsCarousel() {
   const [activeFilter, setActiveFilter] = useState("All Stories");
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [headingVisible, setHeadingVisible] = useState(false);
   const trackRef = useRef(null);
   const startXRef = useRef(0);
 
+  useEffect(() => { setTimeout(() => setHeadingVisible(true), 100); }, []);
   // Check screen size
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -257,6 +260,8 @@ export default function TestimonialsCarousel() {
       {/* Google Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@500;600;700;800&display=swap');
+        .section-heading { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s; }
+        .section-heading.on { opacity: 1; transform: translateY(0); }
         @keyframes riseIn {
           from { opacity: 0; transform: translateY(24px); }
           to   { opacity: 1; transform: translateY(0); }
@@ -284,15 +289,9 @@ export default function TestimonialsCarousel() {
 
         {/* Heading */}
         <div className="text-center px-4 mb-6 md:mb-8 rise-in">
-          <h2
-            className="font-extrabold tracking-tight text-[#1C0A08] mb-4 md:mb-6"
-            style={{
-              fontFamily: "'Baloo 2', cursive",
-              fontSize: "clamp(26px, 5vw, 50px)",
-            }}
-          >
+          <h2 className={`section-heading ${headingVisible ? "on" : ""} mb-4 md:mb-6`}>
             See why families{" "}
-            <span style={{ color: "#B42A63" }}>love us...</span>
+            <span className="grad">love us...</span>
           </h2>
 
           {/* Filter Buttons */}
@@ -324,6 +323,24 @@ export default function TestimonialsCarousel() {
 
         {/* Carousel */}
         <div className="relative w-full rise-in-delay">
+          {/* Left Arrow */}
+          <button
+            onClick={() => goTo(current - 1)}
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl transition-all duration-200 border-2 border-[#1C0A08]/10 hover:border-[#1C0A08] text-[#1C0A08]"
+            aria-label="Previous"
+          >
+            <ChevronLeft size={20} strokeWidth={2.5} />
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={() => goTo(current + 1)}
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl transition-all duration-200 border-2 border-[#1C0A08]/10 hover:border-[#1C0A08] text-[#1C0A08]"
+            aria-label="Next"
+          >
+            <ChevronRight size={20} strokeWidth={2.5} />
+          </button>
+
           {/* Track wrapper */}
           <div className="overflow-hidden py-4 md:py-6">
             <div
@@ -345,41 +362,20 @@ export default function TestimonialsCarousel() {
             </div>
           </div>
 
-          {/* Nav row */}
-          <div className="flex items-center justify-center gap-4 md:gap-6 mt-2">
-            {/* Prev */}
-            <button
-              onClick={() => goTo(current - 1)}
-              className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-white border-2 border-[#1C0A08] flex items-center justify-center text-base md:text-xl text-[#1C0A08] shadow-md transition-all duration-200 hover:bg-[#1C0A08] hover:text-white hover:scale-110"
-              aria-label="Previous"
-            >
-              ←
-            </button>
-
-            {/* Dots */}
-            <div className="flex items-center gap-1.5 md:gap-2">
-              {Array.from({ length: PAGES }).map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => goTo(i)}
-                  className="h-2 rounded-full transition-all duration-300"
-                  style={{
-                    width: i === current ? (isMobile ? "20px" : "28px") : "8px",
-                    background: i === current ? "#B42A63" : "rgba(28,10,8,0.25)",
-                  }}
-                  aria-label={`Go to slide ${i + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Next */}
-            <button
-              onClick={() => goTo(current + 1)}
-              className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-white border-2 border-[#1C0A08] flex items-center justify-center text-base md:text-xl text-[#1C0A08] shadow-md transition-all duration-200 hover:bg-[#1C0A08] hover:text-white hover:scale-110"
-              aria-label="Next"
-            >
-              →
-            </button>
+          {/* Dots — bottom center */}
+          <div className="flex items-center justify-center gap-1.5 md:gap-2 mt-2">
+            {Array.from({ length: PAGES }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                className="h-2 rounded-full transition-all duration-300"
+                style={{
+                  width: i === current ? (isMobile ? "20px" : "28px") : "8px",
+                  background: i === current ? "#B42A63" : "rgba(28,10,8,0.25)",
+                }}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
           </div>
         </div>
       </section>

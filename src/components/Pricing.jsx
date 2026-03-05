@@ -67,46 +67,19 @@ export const Pricing = () => {
     return (
         <section id="pricing" className="pt-14 lg:pt-20 pb-8 lg:pb-12 bg-white overflow-hidden relative">
             <style>{`
-                .pricing-heading {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: clamp(28px, 5vw, 46px);
-                    font-weight: 800;
-                    line-height: 1.1;
-                    letter-spacing: -0.03em;
-                    color: #1a1020;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
-                    margin-bottom: 16px;
-                }
-                .pricing-heading.on { opacity: 1; transform: translateY(0); }
-                .pricing-heading .grad {
-                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-                .pricing-label {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: 14px;
-                    font-weight: 700;
-                    letter-spacing: 0.18em;
-                    text-transform: uppercase;
-                    color: #FF6B1A;
-                    opacity: 0;
-                    transform: translateY(12px);
-                    transition: all 0.6s ease 0.35s;
-                }
-                .pricing-label.on { opacity: 1; transform: translateY(0); }
+                .section-heading { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s; margin-bottom: 16px; }
+                .section-heading.on { opacity: 1; transform: translateY(0); }
+                .section-label { opacity: 0; transform: translateY(12px); transition: all 0.6s ease 0.35s; }
+                .section-label.on { opacity: 1; transform: translateY(0); }
             `}</style>
 
             <div className="container-custom relative z-10">
                 {/* Header */}
                 <div className="text-center max-w-2xl mx-auto mb-10">
-                    <h2 className={`pricing-heading ${visible ? "on" : ""}`}>
+                    <h2 className={`section-heading ${visible ? "on" : ""}`}>
                         Simple, Honest <span className="grad">Pricing</span>
                     </h2>
-                    <p className={`pricing-label ${visible ? "on" : ""}`}>Choose Your Plan</p>
+                    <p className={`section-label ${visible ? "on" : ""}`}>Choose Your Plan</p>
                     <p className="text-base text-gray-500 leading-relaxed mt-4" style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.6s ease 0.5s' }}>
                         All plans include free shipping and a 100% satisfaction guarantee. Cancel anytime.
                     </p>

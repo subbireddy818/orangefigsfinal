@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-// Brand color palette
+// Same palette as Services section
 const colors = {
-  orange: { main: "#FCAB52", light: "#FFF4DC", dark: "#E8963A" },
-  coral: { main: "#FA4A38", light: "#FFE5E2", dark: "#D93D2E" },
-  teal: { main: "#3BC7D5", light: "#E0F7FA", dark: "#2BA5B0" },
-  green: { main: "#74B842", light: "#E8F5E0", dark: "#5A9A32" },
+  coral: { main: "#FA4A38", light: "#fde0dd", dark: "#D93D2E" },
+  magenta: { main: "#B42A63", light: "#f5d0e0", dark: "#8F2250" },
+  teal: { main: "#3BC7D5", light: "#d4f4f7", dark: "#2BA5B0" },
+  blue: { main: "#366BC4", light: "#d6e4f7", dark: "#2954A0" },
 };
 
 // ── ICONS ──────────────────────────────────────────────────────────────
@@ -130,8 +130,12 @@ const CtaLink = ({ href = "#", children, color }) => {
 // ── MAIN COMPONENT ─────────────────────────────────────────────────────────
 
 const whyStyles = `
-  .why-grid { display: grid; grid-template-columns: 2.4fr 1fr; gap: 0; align-items: stretch; }
-  .why-left { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: start; }
+  .section-heading { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s; }
+  .section-heading.on { opacity: 1; transform: translateY(0); }
+  .section-label { opacity: 0; transform: translateY(12px); transition: all 0.6s ease 0.35s; }
+  .section-label.on { opacity: 1; transform: translateY(0); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; }
+  .why-left { display: block; }
   .why-right { border-left: 2px solid #f0e6dc; }
   @media (max-width: 900px) {
     .why-grid { grid-template-columns: 1fr; }
@@ -145,13 +149,15 @@ const whyStyles = `
 `;
 
 export const WhyChooseUs = () => {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => { setTimeout(() => setVisible(true), 100); }, []);
   return (
     <>
       <style>{whyStyles}</style>
       <section
         id="why"
         style={{
-          background: "#FFFFFF",
+          background: "#fffaf6",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -167,50 +173,36 @@ export const WhyChooseUs = () => {
             padding: "clamp(30px, 5vw, 50px) clamp(16px, 4vw, 48px)",
           }}
         >
-          {/* Section Label */}
-          <p style={{ fontSize: "clamp(11px, 1.5vw, 14px)", color: colors.coral.main, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "clamp(12px, 2vw, 20px)" }}>
-            / Why Orange Figs?
-          </p>
+          {/* Centered heading block — top center */}
+          <div style={{ textAlign: "center", marginBottom: "clamp(32px, 5vw, 48px)", maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
+            <h2 className={`section-heading ${visible ? "on" : ""}`} style={{ marginBottom: "16px" }}>
+              The Orange Figs <span className="grad">Difference</span>
+            </h2>
+            <p className={`section-label ${visible ? "on" : ""}`} style={{ marginBottom: "clamp(16px, 2vw, 24px)" }}>
+              / Why Orange Figs?
+            </p>
+            <p
+              style={{
+                fontSize: "clamp(14px, 1.5vw, 16px)",
+                color: "#555",
+                lineHeight: 1.65,
+                marginBottom: "clamp(20px, 3vw, 28px)",
+              }}
+            >
+              We don't just teach cooking — we build confidence, creativity, and habits that last a lifetime. Our Michelin-experienced chefs create a nurturing environment where young minds flourish.
+            </p>
+            <div style={{ display: "flex", gap: "clamp(12px, 2vw, 20px)", alignItems: "center", justifyContent: "center", flexWrap: "wrap" }}>
+              <CtaLink href="#contact" color={colors.coral.main}>Book Free Trial ›</CtaLink>
+              <CtaLink href="#contact" color={colors.teal.main}>Contact Us ›</CtaLink>
+            </div>
+          </div>
 
           <div className="why-grid">
 
           {/* ── LEFT BLOCK ── */}
           <div className="why-left">
-            {/* Text Column */}
-            <div style={{ paddingRight: "clamp(12px, 3vw, 40px)" }}>
-              <h2
-                style={{
-                  fontFamily: "'AndesRounded', system-ui, sans-serif",
-                  fontSize: "clamp(24px, 5vw, 52px)",
-                  fontWeight: 800,
-                  lineHeight: 1.08,
-                  color: "#1a1a1a",
-                  marginBottom: "clamp(12px, 2vw, 24px)",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                The Orange Figs<br /><span style={{ background: `linear-gradient(135deg, ${colors.coral.main}, ${colors.orange.main})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Difference</span>
-              </h2>
-
-              <p
-                style={{
-                  fontSize: "clamp(11px, 1.5vw, 15px)",
-                  color: "#555",
-                  lineHeight: 1.65,
-                  marginBottom: "clamp(16px, 3vw, 32px)",
-                }}
-              >
-                We don't just teach cooking — we build confidence, creativity, and habits that last a lifetime. Our Michelin-experienced chefs create a nurturing environment where young minds flourish.
-              </p>
-
-              <div style={{ display: "flex", gap: "clamp(10px, 2vw, 20px)", alignItems: "center", flexWrap: "wrap" }}>
-                <CtaLink href="#contact" color={colors.coral.main}>Book Free Trial ›</CtaLink>
-                <CtaLink href="#contact" color={colors.teal.main}>Contact Us ›</CtaLink>
-              </div>
-            </div>
-
-            {/* Middle Features */}
-            <div className="why-features" style={{ paddingTop: "clamp(40px, 8vw, 100px)", paddingRight: "clamp(12px, 3vw, 32px)", paddingLeft: "clamp(12px, 3vw, 40px)" }}>
+            {/* Features */}
+            <div className="why-features" style={{ paddingRight: "clamp(12px, 3vw, 32px)", paddingLeft: "clamp(12px, 3vw, 40px)" }}>
               <FeatureItem
                 isFirst
                 icon={<ExpertIcon color={colors.coral} />}
@@ -219,41 +211,41 @@ export const WhyChooseUs = () => {
                 color={colors.coral}
               />
               <FeatureItem
-                icon={<AwardIcon color={colors.orange} />}
+                icon={<AwardIcon color={colors.magenta} />}
                 title="Award-Winning Curriculum"
                 description="Recognised nationally for blending creativity, nutrition, and technique beautifully."
-                color={colors.orange}
+                color={colors.magenta}
               />
             </div>
           </div>
 
           {/* ── RIGHT COL ── */}
           <div className="why-right" style={{ paddingLeft: "clamp(12px, 3vw, 32px)", paddingBottom: 20, paddingTop: "clamp(20px, 4vw, 40px)" }}>
-            <FeatureItem
-              isFirst
-              icon={<SafetyIcon color={colors.teal} />}
-              title="Safety First"
-              description="State-of-the-art kitchen with induction heating, age-appropriate tools, and strict hygiene standards."
-              color={colors.teal}
-            />
-            <FeatureItem
-              icon={<FamilyIcon color={colors.green} />}
-              title="1200+ Happy Families"
-              description={
-                <>
-                  Don't just take our word for it—
-                  <a href="#testimonials" style={{ color: colors.green.main, textDecoration: "underline" }}>
-                    see
-                  </a>{" "}
-                  what parents say about Orange Figs.
-                </>
-              }
-              color={colors.green}
-            />
+              <FeatureItem
+                isFirst
+                icon={<SafetyIcon color={colors.teal} />}
+                title="Safety First"
+                description="State-of-the-art kitchen with induction heating, age-appropriate tools, and strict hygiene standards."
+                color={colors.teal}
+              />
+              <FeatureItem
+                icon={<FamilyIcon color={colors.blue} />}
+                title="1200+ Happy Families"
+                description={
+                  <>
+                    Don't just take our word for it—
+                    <a href="#testimonials" style={{ color: colors.blue.main, textDecoration: "underline" }}>
+                      see
+                    </a>{" "}
+                    what parents say about Orange Figs.
+                  </>
+                }
+                color={colors.blue}
+              />
           </div>
 
+          </div>
         </div>
-      </div>
     </section>
     </>
   );

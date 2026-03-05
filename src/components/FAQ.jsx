@@ -112,46 +112,19 @@ export const FAQ = () => {
     return (
         <section className="pt-14 lg:pt-12 pb-8 lg:pb-10 bg-white overflow-hidden relative">
             <style>{`
-                .faq-heading {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: clamp(28px, 5vw, 46px);
-                    font-weight: 800;
-                    line-height: 1.1;
-                    letter-spacing: -0.03em;
-                    color: #1a1020;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
-                    margin-bottom: 16px;
-                }
-                .faq-heading.on { opacity: 1; transform: translateY(0); }
-                .faq-heading .grad {
-                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-                .faq-label {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: 14px;
-                    font-weight: 700;
-                    letter-spacing: 0.18em;
-                    text-transform: uppercase;
-                    color: #FF6B1A;
-                    opacity: 0;
-                    transform: translateY(12px);
-                    transition: all 0.6s ease 0.35s;
-                }
-                .faq-label.on { opacity: 1; transform: translateY(0); }
+                .section-heading { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s; margin-bottom: 16px; }
+                .section-heading.on { opacity: 1; transform: translateY(0); }
+                .section-label { opacity: 0; transform: translateY(12px); transition: all 0.6s ease 0.35s; }
+                .section-label.on { opacity: 1; transform: translateY(0); }
             `}</style>
 
             <div className="container-custom">
                 {/* Header */}
                 <div className="text-center max-w-2xl mx-auto mb-6">
-                    <h2 className={`faq-heading ${visible ? "on" : ""}`}>
+                    <h2 className={`section-heading ${visible ? "on" : ""}`}>
                         Got <span className="grad">Questions?</span>
                     </h2>
-                    <p className={`faq-label ${visible ? "on" : ""}`}>Frequently Asked Questions</p>
+                    <p className={`section-label ${visible ? "on" : ""}`}>Frequently Asked Questions</p>
                     <p className="text-lg text-gray-500 leading-relaxed mt-4" style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.6s ease 0.5s' }}>
                         Everything you need to know about Orange Figs. Can't find your answer? <a href="#contact" className="text-orange-500 font-bold underline underline-offset-2">Contact us</a>.
                     </p>

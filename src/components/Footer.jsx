@@ -56,17 +56,7 @@ export const Footer = () => {
                     {/* Brand */}
                     <div className="lg:col-span-5 space-y-5">
                         <div className="flex items-center gap-4">
-                            <div className="w-20 h-20 bg-orange-50/50 rounded-2xl flex items-center justify-center border border-orange-100/50">
-                                <img src={logo} alt="Logo" className="w-14 h-14 object-contain" />
-                            </div>
-                            <div>
-                                <div className="text-xl font-black tracking-tight text-gray-900 leading-none">
-                                    <span className="gradient-text">ORANGE FIGS</span>
-                                </div>
-                                <div className="text-[10px] font-bold text-orange-500/80 uppercase tracking-[0.3em] mt-1 ml-0.5">
-                                    Culinary School
-                                </div>
-                            </div>
+                            <img src={logo} alt="Orange Figs" className="w-24 h-24 object-contain" />
                         </div>
 
                         <p className="text-gray-500 text-sm leading-relaxed max-w-sm font-medium">

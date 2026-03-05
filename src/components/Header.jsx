@@ -29,7 +29,6 @@ export const Header = () => {
 
     const navItems = [
         { label: 'Our Services', id: 'services' },
-        { label: 'How It Works', id: 'how-it-works' },
         { label: 'Why Us', id: 'why' },
         { label: 'Gallery', id: 'gallery' },
         { label: 'Contact', id: 'contact' }

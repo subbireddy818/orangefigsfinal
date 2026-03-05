@@ -20,43 +20,16 @@ export const Gallery = () => {
     return (
         <section id="gallery" className="pt-10 pb-0 bg-white overflow-hidden">
             <style>{`
-                .gallery-heading {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: clamp(24px, 4vw, 40px);
-                    font-weight: 800;
-                    line-height: 1.1;
-                    letter-spacing: -0.03em;
-                    color: #1a1020;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
-                    margin-bottom: 16px;
-                }
-                .gallery-heading.on { opacity: 1; transform: translateY(0); }
-                .gallery-heading .grad {
-                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-                .gallery-label {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: 14px;
-                    font-weight: 700;
-                    letter-spacing: 0.18em;
-                    text-transform: uppercase;
-                    color: #FF6B1A;
-                    opacity: 0;
-                    transform: translateY(12px);
-                    transition: all 0.6s ease 0.35s;
-                }
-                .gallery-label.on { opacity: 1; transform: translateY(0); }
+                .section-heading { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s; margin-bottom: 16px; }
+                .section-heading.on { opacity: 1; transform: translateY(0); }
+                .section-label { opacity: 0; transform: translateY(12px); transition: all 0.6s ease 0.35s; }
+                .section-label.on { opacity: 1; transform: translateY(0); }
             `}</style>
             <div className="container-custom text-center mb-8">
-                <h2 className={`gallery-heading ${visible ? "on" : ""}`}>
+                <h2 className={`section-heading ${visible ? "on" : ""}`}>
                     1,200+ Little Chefs <span className="grad">Learning & Enjoying</span> Every Month
                 </h2>
-                <p className={`gallery-label ${visible ? "on" : ""}`}>Our Community</p>
+                <p className={`section-label ${visible ? "on" : ""}`}>Our Community</p>
                 <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto font-medium leading-relaxed mt-4" style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.6s ease 0.5s' }}>
                     Together, we are baking the world a better place. Become a part of the Orange Figs Community to join the fun and learn a ton.
                 </p>

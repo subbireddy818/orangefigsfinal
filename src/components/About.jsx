@@ -44,38 +44,10 @@ export const About = () => {
     return (
         <section id="about" className="section-padding bg-white relative overflow-hidden" ref={sectionRef}>
             <style>{`
-                .about-heading {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: clamp(28px, 5vw, 46px);
-                    font-weight: 800;
-                    line-height: 1.1;
-                    letter-spacing: -0.03em;
-                    color: #1a1020;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s;
-                }
-                .about-heading.on { opacity: 1; transform: translateY(0); }
-                .about-heading .grad {
-                    background: linear-gradient(135deg, #FF6B1A, #F43F8A);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-                .about-label {
-                    font-family: 'AndesRounded', system-ui, sans-serif;
-                    font-size: 14px;
-                    font-weight: 700;
-                    letter-spacing: 0.18em;
-                    text-transform: uppercase;
-                    color: #FF6B1A;
-                    opacity: 0;
-                    transform: translateY(12px);
-                    transition: all 0.6s ease 0.35s;
-                    margin-bottom: 16px;
-                    display: inline-block;
-                }
-                .about-label.on { opacity: 1; transform: translateY(0); }
+                .section-heading { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s; }
+                .section-heading.on { opacity: 1; transform: translateY(0); }
+                .section-label { opacity: 0; transform: translateY(12px); transition: all 0.6s ease 0.35s; margin-bottom: 16px; display: inline-block; }
+                .section-label.on { opacity: 1; transform: translateY(0); }
             `}</style>
 
             <div className="container-custom relative z-10">
@@ -120,8 +92,8 @@ export const About = () => {
                         className="space-y-10"
                     >
                         <div className="space-y-4">
-                            <p className={`about-label ${visible ? "on" : ""}`}>Our Philosophy</p>
-                            <h2 className={`about-heading ${visible ? "on" : ""}`}>
+                            <p className={`section-label ${visible ? "on" : ""}`}>Our Philosophy</p>
+                            <h2 className={`section-heading ${visible ? "on" : ""}`}>
                                 Where Small Hands Create <span className="grad">Big Flavor.</span>
                             </h2>
                             <p className="text-xl text-subtle leading-relaxed italic border-l-4 border-primary pl-6">
