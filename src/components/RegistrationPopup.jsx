@@ -22,6 +22,12 @@ export const RegistrationPopup = () => {
         email: '',
     });
 
+    // Preload popup image for faster display
+    useEffect(() => {
+        const img = new Image();
+        img.src = "/ADI09926%20(1).jpg";
+    }, []);
+
     useEffect(() => {
         const timer = setTimeout(() => {
             const hasSeenPopup = localStorage.getItem('hasSeenRegistrationPopup');
@@ -86,9 +92,9 @@ export const RegistrationPopup = () => {
                         src="/ADI09926%20(1).jpg"
                         alt="Cooking"
                         className="w-full h-full object-cover"
+                        loading="eager"
+                        fetchPriority="high"
                     />
-                    {/* Orange gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-orange-600/30 to-transparent" />
                     {/* Wavy Separator for Desktop */}
                     <div className="absolute top-0 -right-1 h-full w-24 z-10 hidden md:block">
                         <svg viewBox="0 0 100 500" preserveAspectRatio="none" className="h-full w-full fill-white">
