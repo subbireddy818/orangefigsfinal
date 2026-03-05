@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import { Toaster } from 'sonner';
 import OrangeFigsLoader from './components/OrangeFigsLoader';
@@ -20,7 +20,6 @@ import { FAQ } from './components/FAQ';
 import { ScrollToTop } from './components/ScrollToTop';
 
 function App() {
-    const [loaderDone, setLoaderDone] = useState(false);
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -30,7 +29,7 @@ function App() {
 
     return (
         <div className="App selection:bg-orange-100 selection:text-orange-600">
-            <OrangeFigsLoader onDone={() => setLoaderDone(true)} />
+            <OrangeFigsLoader />
             <motion.div
                 className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 origin-left z-[100]"
                 style={{ scaleX }}
