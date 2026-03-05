@@ -14,7 +14,7 @@ export default function OrangeFigsLoader({ onDone }) {
       if (onDone) onDone();
     }, 4000);
     return () => clearTimeout(t);
-  }, []);
+  }, [onDone]);
 
   if (!show) return null;
 
