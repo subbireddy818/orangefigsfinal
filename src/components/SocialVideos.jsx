@@ -4,14 +4,14 @@ import { Instagram, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Video cards only (Instagram row removed)
 const socialVideos = [
-    { id: 1, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274787/IMG_0839_pjgvj2.mp4' },
+    { id: 1, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772275027/IMG_0809_nnzfxc.mp4' },
     { id: 2, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274826/IMG_0807_ocqxex.mp4' },
     { id: 3, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274875/IMG_0837_wgrarx.mp4' },
     { id: 4, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274915/IMG_0838_jx1d2h.mp4' },
     { id: 5, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274997/IMG_0836_rcnagd.mp4' },
     { id: 6, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772275005/IMG_0824_h2kxy8.mp4' },
     { id: 7, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772275018/IMG_0823_ti3s2l.mp4' },
-    { id: 8, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772275027/IMG_0809_nnzfxc.mp4' },
+    { id: 8, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772274787/IMG_0839_pjgvj2.mp4' },
     { id: 9, src: 'https://res.cloudinary.com/dg5qkp09h/video/upload/v1772275040/IMG_0808_ricrtt.mp4' },
 ];
 

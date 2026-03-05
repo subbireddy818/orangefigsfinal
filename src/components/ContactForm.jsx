@@ -121,7 +121,7 @@ export const ContactForm = () => {
     return (
         <section
             id="contact"
-            className="relative min-h-[780px] md:min-h-[860px] flex items-center justify-center py-16 lg:py-24 overflow-hidden"
+            className="relative min-h-[780px] md:min-h-[860px] flex flex-col items-center justify-center py-16 lg:py-24 overflow-hidden"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
             {/* Layer 1: Background image - vibrant, visible */}
@@ -177,7 +177,35 @@ export const ContactForm = () => {
                 }
             `}</style>
 
-            {/* Form wrapper - local blur/overlay behind card only */}
+            {/* Section content above form */}
+            <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10 w-full max-w-2xl mx-auto px-4 sm:px-6 text-center mb-10"
+            >
+                <p
+                    className="text-xs font-semibold uppercase tracking-[0.25em] mb-3"
+                    style={{ color: "rgba(255,255,255,0.9)", textShadow: "0 1px 6px rgba(0,0,0,0.3)" }}
+                >
+                    Get In Touch
+                </p>
+                <h2
+                    className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight"
+                    style={{ color: "#fff", textShadow: "0 2px 12px rgba(0,0,0,0.35)" }}
+                >
+                    We&apos;d Love to Hear From You
+                </h2>
+                <p
+                    className="text-base sm:text-lg text-white/95 max-w-xl mx-auto leading-relaxed"
+                    style={{ textShadow: "0 1px 6px rgba(0,0,0,0.25)" }}
+                >
+                    Have questions about our cooking classes, camps, or birthday celebrations? Drop us a message and our team will get back to you within 24 hours.
+                </p>
+            </motion.div>
+
+            {/* Form wrapper */}
             <motion.div
                 initial={{ opacity: 0, y: 36 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -185,7 +213,6 @@ export const ContactForm = () => {
                 transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                 className="relative z-10 w-full max-w-[540px] mx-auto px-4 sm:px-6"
             >
-                {/* Soft blur + dark vignette behind card only */}
                 <div
                     className="absolute -inset-8 rounded-[36px] pointer-events-none"
                     style={{

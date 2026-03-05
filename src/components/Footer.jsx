@@ -115,26 +115,37 @@ export const Footer = () => {
                         </h4>
 
                         <div className="space-y-4 text-sm text-gray-600 font-medium">
-                            <div className="flex items-start gap-3 group">
-                                <div className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500 shrink-0 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                            <a
+                                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-start gap-3 group cursor-pointer hover:text-orange-500 transition-colors"
+                            >
+                                <span className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500 shrink-0 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                                     <MapPin size={14} />
-                                </div>
+                                </span>
                                 <span className="pt-1">{contactInfo.address}</span>
-                            </div>
+                            </a>
 
-                            <div className="flex items-center gap-3 group">
-                                <div className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500 shrink-0 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                            <a
+                                href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
+                                className="flex items-center gap-3 group cursor-pointer hover:text-orange-500 transition-colors"
+                            >
+                                <span className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500 shrink-0 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                                     <Phone size={14} />
-                                </div>
+                                </span>
                                 <span>{contactInfo.phone}</span>
-                            </div>
+                            </a>
 
-                            <div className="flex items-center gap-3 group">
-                                <div className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500 shrink-0 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                            <a
+                                href={`mailto:${contactInfo.email}`}
+                                className="flex items-center gap-3 group cursor-pointer hover:text-orange-500 transition-colors"
+                            >
+                                <span className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500 shrink-0 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                                     <Mail size={14} />
-                                </div>
+                                </span>
                                 <span>{contactInfo.email}</span>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>

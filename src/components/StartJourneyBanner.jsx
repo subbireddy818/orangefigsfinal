@@ -169,7 +169,7 @@ export default function StartJourneyBanner() {
                                 }}
                             >
                                 <img
-                                    src="https://img.freepik.com/free-vector/cute-boy-chef-cooking-cartoon-vector-icon-illustration-people-food-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3755.jpg"
+                                    src="/DSC05046.jpg"
                                     alt="Young chef cooking"
                                     className="w-full h-full object-cover object-[center_top] rounded-[inherit]"
                                     onError={(e) => {
