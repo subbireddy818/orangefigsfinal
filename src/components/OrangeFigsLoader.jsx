@@ -35,7 +35,6 @@ export default function OrangeFigsLoader({ onDone }) {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;600;700&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .ldr-root {
@@ -71,7 +70,7 @@ export default function OrangeFigsLoader({ onDone }) {
 
         .ldr-char {
           display: inline-block;
-          font-family: 'DM Serif Display', serif;
+          font-family: 'AndesRounded', sans-serif;
           font-size: 42px;
           letter-spacing: -0.02em;
           opacity: 0;
@@ -100,7 +99,7 @@ export default function OrangeFigsLoader({ onDone }) {
         }
 
         .ldr-tagline {
-          font-family: 'DM Sans', sans-serif;
+          font-family: 'AndesRounded', sans-serif;
           font-size: 11px;
           font-weight: 700;
           letter-spacing: 0.28em;

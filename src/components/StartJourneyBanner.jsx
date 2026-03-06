@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const css = `
-  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@500;600;700;800&display=swap');
   @keyframes sj-left  { from{opacity:0;transform:translateX(-40px)} to{opacity:1;transform:translateX(0)} }
   @keyframes sj-right { from{opacity:0;transform:translateX(40px)}  to{opacity:1;transform:translateX(0)} }
   @keyframes sj-up    { from{opacity:0;transform:translateY(24px)}  to{opacity:1;transform:translateY(0)} }
@@ -108,7 +107,7 @@ export default function StartJourneyBanner() {
                             <div
                                 className="s1 inline-flex items-center gap-1.5 mb-3.5 font-extrabold text-[10.5px] uppercase tracking-widest text-[#1C0A08] rounded-full px-4 py-1.5 border border-white/60 self-center md:self-start"
                                 style={{
-                                    fontFamily: "'Nunito',sans-serif",
+                                    fontFamily: "'AndesRounded', sans-serif",
                                     letterSpacing: "0.13em",
                                     background: "rgba(255,255,255,0.35)",
                                     backdropFilter: "blur(12px)",
@@ -119,7 +118,7 @@ export default function StartJourneyBanner() {
 
                             <h2
                                 className="s2 sj-title text-3xl md:text-[42px] font-extrabold leading-tight tracking-tight mb-3.5"
-                                style={{ fontFamily: "'Baloo 2',cursive", letterSpacing: "-0.03em" }}
+                                style={{ fontFamily: "'AndesRounded', sans-serif", letterSpacing: "-0.03em" }}
                             >
                                 Start Your
                                 <br />
@@ -128,9 +127,9 @@ export default function StartJourneyBanner() {
 
                             <p
                                 className="s3 text-sm md:text-[14.5px] font-semibold text-white/90 max-w-[370px] mx-auto md:mx-0 mb-6 leading-relaxed"
-                                style={{ fontFamily: "'Nunito',sans-serif", lineHeight: 1.65 }}
+                                style={{ fontFamily: "'AndesRounded', sans-serif", lineHeight: 1.65 }}
                             >
-                                We'd love to welcome you and your child to our learning family — where young chefs discover confidence, creativity and the joy of cooking.
+                                Stay updated on upcoming camps, workshops and new experiences.
                             </p>
 
                             <div className="s4">
@@ -139,14 +138,14 @@ export default function StartJourneyBanner() {
                                     onClick={scrollToContact}
                                     className="sj-btn inline-flex items-center gap-2.5 font-extrabold text-base py-3 px-8 rounded-full border-0 cursor-pointer"
                                     style={{
-                                        fontFamily: "'Baloo 2',cursive",
+                                        fontFamily: "'AndesRounded', sans-serif",
                                         background: "#FDD871",
                                         color: "#B42A63",
                                         boxShadow: "0 8px 32px rgba(253,216,113,0.45)",
                                         letterSpacing: "0.01em",
                                     }}
                                 >
-                                    Enroll Now
+                                    Keep me posted
                                     <span
                                         className="inline-flex items-center justify-center w-7 h-7 rounded-full text-sm"
                                         style={{ background: "#B42A63", color: "#FDD871" }}
@@ -169,7 +168,7 @@ export default function StartJourneyBanner() {
                                 }}
                             >
                                 <img
-                                    src="/DSC05046.jpg"
+                                    src="https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798913/_VPC7498_sxbvy9.jpg"
                                     alt="Young chef cooking"
                                     className="w-full h-full object-cover object-[center_top] rounded-[inherit]"
                                     onError={(e) => {
@@ -180,7 +179,7 @@ export default function StartJourneyBanner() {
                                 />
                                 <div className="hidden flex-col items-center justify-center w-full h-full gap-1.5 text-center px-4">
                                     <span className="text-7xl">👨‍🍳</span>
-                                    <p className="font-bold text-[10px] text-[rgba(28,10,8,0.4)]" style={{ fontFamily: "'Nunito',sans-serif" }}>
+                                    <p className="font-bold text-[10px] text-[rgba(28,10,8,0.4)]" style={{ fontFamily: "'AndesRounded', sans-serif" }}>
                                         Add your child photo here
                                     </p>
                                 </div>
@@ -193,8 +192,8 @@ export default function StartJourneyBanner() {
                             >
                                 <div className="w-[34px] h-[34px] rounded-full bg-[#FDD871] flex items-center justify-center text-base flex-shrink-0">⭐</div>
                                 <div>
-                                    <div className="font-extrabold text-sm text-[#1C0A08] leading-none" style={{ fontFamily: "'Baloo 2',cursive" }}>4.9 / 5</div>
-                                    <div className="text-[9.5px] font-bold text-gray-400 leading-none mt-0.5" style={{ fontFamily: "'Nunito',sans-serif" }}>Avg. rating</div>
+                                    <div className="font-extrabold text-sm text-[#1C0A08] leading-none" style={{ fontFamily: "'AndesRounded', sans-serif" }}>4.9 / 5</div>
+                                    <div className="text-[9.5px] font-bold text-gray-400 leading-none mt-0.5" style={{ fontFamily: "'AndesRounded', sans-serif" }}>Avg. rating</div>
                                 </div>
                             </div>
 
@@ -205,8 +204,8 @@ export default function StartJourneyBanner() {
                             >
                                 <div className="w-[34px] h-[34px] rounded-full bg-[#FCAB52] flex items-center justify-center text-base flex-shrink-0">👨‍👩‍👧</div>
                                 <div>
-                                    <div className="font-extrabold text-sm text-[#1C0A08] leading-none" style={{ fontFamily: "'Baloo 2',cursive" }}>8,000+</div>
-                                    <div className="text-[9.5px] font-bold text-gray-400 leading-none mt-0.5" style={{ fontFamily: "'Nunito',sans-serif" }}>Happy families</div>
+                                    <div className="font-extrabold text-sm text-[#1C0A08] leading-none" style={{ fontFamily: "'AndesRounded', sans-serif" }}>1200+</div>
+                                    <div className="text-[9.5px] font-bold text-gray-400 leading-none mt-0.5" style={{ fontFamily: "'AndesRounded', sans-serif" }}>little chefs</div>
                                 </div>
                             </div>
                         </div>

@@ -1253,7 +1253,7 @@ body {
     line-height: 1;
     font-weight: 700;
     color: rgba(252, 171, 82, 0.1);
-    font-family: Georgia, serif;
+    font-family: 'AndesRounded', sans-serif;
 }
 
 /* ========================================
@@ -1405,7 +1405,7 @@ body {
     background: #FFF7ED;
     display: flex;
     flex-direction: column;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'AndesRounded', sans-serif;
     box-sizing: border-box;
 }
 

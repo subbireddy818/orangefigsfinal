@@ -131,7 +131,7 @@ function BlobCard({ item, isMobile }) {
           <p
             className="font-bold text-[#1C0A08]"
             style={{
-              fontFamily: "'Baloo 2', cursive",
+              fontFamily: "'AndesRounded', sans-serif",
               fontSize: isMobile ? "14px" : "16px",
               lineHeight: 1.2,
             }}
@@ -141,7 +141,7 @@ function BlobCard({ item, isMobile }) {
           <p
             className="mb-2"
             style={{
-              fontFamily: "'Nunito', sans-serif",
+              fontFamily: "'AndesRounded', sans-serif",
               fontSize: isMobile ? "10px" : "11.5px",
               fontWeight: 600,
               color: "rgba(28,10,8,0.5)",
@@ -155,7 +155,7 @@ function BlobCard({ item, isMobile }) {
           <span
             className="block leading-none mb-1"
             style={{
-              fontFamily: "'Baloo 2', cursive",
+              fontFamily: "'AndesRounded', sans-serif",
               fontSize: isMobile ? "48px" : "64px",
               color: "rgba(28,10,8,0.09)",
               fontWeight: 800,
@@ -169,7 +169,7 @@ function BlobCard({ item, isMobile }) {
           <p
             className="flex-1 text-[#2A1008] font-semibold"
             style={{
-              fontFamily: "'Nunito', sans-serif",
+              fontFamily: "'AndesRounded', sans-serif",
               fontSize: isMobile ? "12px" : "13.5px",
               lineHeight: 1.68,
             }}
@@ -257,9 +257,7 @@ export default function TestimonialsCarousel() {
 
   return (
     <>
-      {/* Google Fonts */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@500;600;700;800&display=swap');
         .section-heading { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(.22,1,.36,1) 0.1s; }
         .section-heading.on { opacity: 1; transform: translateY(0); }
         @keyframes riseIn {
@@ -302,7 +300,7 @@ export default function TestimonialsCarousel() {
                 onClick={() => setActiveFilter(label)}
                 className="px-4 md:px-6 py-2 md:py-2.5 rounded-full font-bold text-xs md:text-sm transition-all duration-250 border-2"
                 style={{
-                  fontFamily: "'Nunito', sans-serif",
+                  fontFamily: "'AndesRounded', sans-serif",
                   background: activeFilter === label ? "#B42A63" : "white",
                   color: activeFilter === label ? "white" : "#1C0A08",
                   borderColor: activeFilter === label ? "#B42A63" : "#1C0A08",

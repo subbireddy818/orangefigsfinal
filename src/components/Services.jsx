@@ -222,7 +222,7 @@ export const Services = () => {
         }
         .svc-header .section-heading { margin-bottom: 16px; }
         .svc-sub {
-          font-family: 'Nunito', sans-serif;
+          font-family: 'AndesRounded', sans-serif;
           font-size: 16px;
           font-weight: 600;
           color: #9196b3;

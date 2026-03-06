@@ -161,7 +161,7 @@ export const WhyChooseUs = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "'Source Sans 3', sans-serif",
+          fontFamily: "'AndesRounded', sans-serif",
           color: "#1a1a1a",
         }}
       >
@@ -179,7 +179,7 @@ export const WhyChooseUs = () => {
               The Orange Figs <span className="grad">Difference</span>
             </h2>
             <p className={`section-label ${visible ? "on" : ""}`} style={{ marginBottom: "clamp(16px, 2vw, 24px)" }}>
-              / Why Orange Figs?
+              Why Orange Figs?
             </p>
             <p
               style={{
@@ -189,10 +189,9 @@ export const WhyChooseUs = () => {
                 marginBottom: "clamp(20px, 3vw, 28px)",
               }}
             >
-              We don't just teach cooking — we build confidence, creativity, and habits that last a lifetime. Our Michelin-experienced chefs create a nurturing environment where young minds flourish.
+              At Orange Figs, we craft meaningful culinary experiences rooted in creativity and culture. Every gathering is thoughtfully designed with warmth, precision, and attention to detail. We honour each milestone — from celebrations to first discoveries in the kitchen. Most importantly, we create safe, joyful spaces where children feel confident to explore, learn, and grow.
             </p>
             <div style={{ display: "flex", gap: "clamp(12px, 2vw, 20px)", alignItems: "center", justifyContent: "center", flexWrap: "wrap" }}>
-              <CtaLink href="#contact" color={colors.coral.main}>Book Free Trial ›</CtaLink>
               <CtaLink href="#contact" color={colors.teal.main}>Contact Us ›</CtaLink>
             </div>
           </div>
@@ -206,14 +205,14 @@ export const WhyChooseUs = () => {
               <FeatureItem
                 isFirst
                 icon={<ExpertIcon color={colors.coral} />}
-                title="Expert Instructors"
-                description="Guided by Michelin-experienced chefs who specialise in child development and culinary arts."
+                title="Curated, Not Casual"
+                description="Our programs are thoughtfully structured — not drop-in activities, but intentional culinary journeys designed with progression and purpose."
                 color={colors.coral}
               />
               <FeatureItem
                 icon={<AwardIcon color={colors.magenta} />}
-                title="Award-Winning Curriculum"
-                description="Recognised nationally for blending creativity, nutrition, and technique beautifully."
+                title="Culture Beyond Recipes"
+                description="We go beyond cooking instructions. Children explore the stories, traditions, and global influences behind every dish."
                 color={colors.magenta}
               />
             </div>
@@ -224,22 +223,14 @@ export const WhyChooseUs = () => {
               <FeatureItem
                 isFirst
                 icon={<SafetyIcon color={colors.teal} />}
-                title="Safety First"
-                description="State-of-the-art kitchen with induction heating, age-appropriate tools, and strict hygiene standards."
+                title="Professional Standards, Child-Centred Approach"
+                description="Led by experienced chefs, our sessions balance real kitchen discipline with a nurturing, age-appropriate environment."
                 color={colors.teal}
               />
               <FeatureItem
                 icon={<FamilyIcon color={colors.blue} />}
-                title="1200+ Happy Families"
-                description={
-                  <>
-                    Don't just take our word for it—
-                    <a href="#testimonials" style={{ color: colors.blue.main, textDecoration: "underline" }}>
-                      see
-                    </a>{" "}
-                    what parents say about Orange Figs.
-                  </>
-                }
+                title="Growth You Can See"
+                description="Children leave with more than a finished dish — they gain confidence, independence, collaboration skills, and a deeper relationship with food."
                 color={colors.blue}
               />
           </div>

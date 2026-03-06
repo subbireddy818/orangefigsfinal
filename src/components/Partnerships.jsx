@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const partners = [
     { name: "Partner 1", logo: "/partner1.jpeg" },
-    { name: "Partner 2", logo: "/partner2.jpeg" },
-    { name: "Partner 3", logo: "/partner3.jpeg" },
-    { name: "Partner 4", logo: "/partner4.jpeg" },
-    { name: "Partner 5", logo: "/partner5.jpeg" },
 ];
 
 export const Partnerships = () => {
@@ -42,7 +38,7 @@ export const Partnerships = () => {
                         <div
                             key={index}
                             className="relative h-24 md:h-28 lg:h-32 rounded-xl overflow-hidden 
-                              border border-orange-100 bg-white shadow-sm 
+                              bg-white shadow-sm 
                               flex items-center justify-center p-4"
                         >
                             <img

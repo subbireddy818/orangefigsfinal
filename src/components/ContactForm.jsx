@@ -122,7 +122,7 @@ export const ContactForm = () => {
         <section
             id="contact"
             className="relative min-h-[780px] md:min-h-[860px] flex flex-col items-center justify-center py-16 lg:py-24 overflow-hidden"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+            style={{ fontFamily: "'AndesRounded', sans-serif" }}
         >
             {/* Layer 1: Background image - vibrant, visible */}
             <div
@@ -175,6 +175,10 @@ export const ContactForm = () => {
                     0%, 100% { transform: translate(0,0) scale(1); opacity: 0.2; }
                     50% { transform: translate(8px,-12px) scale(1.05); opacity: 0.35; }
                 }
+                @media (max-width: 768px) {
+                    .contact-form-wrapper { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+                    .contact-form-card { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+                }
             `}</style>
 
             {/* Section content above form */}
@@ -214,7 +218,7 @@ export const ContactForm = () => {
                 className="relative z-10 w-full max-w-[540px] mx-auto px-4 sm:px-6"
             >
                 <div
-                    className="absolute -inset-8 rounded-[36px] pointer-events-none"
+                    className="contact-form-wrapper absolute -inset-8 rounded-[36px] pointer-events-none"
                     style={{
                         background:
                             "radial-gradient(ellipse 80% 70% at 50% 50%, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.45) 100%)",
@@ -257,7 +261,7 @@ export const ContactForm = () => {
 
                 {/* Form card - more opaque, stronger shadow, elevation */}
                 <div
-                    className="relative rounded-[28px] p-8 sm:p-10"
+                    className="contact-form-card relative rounded-[28px] p-8 sm:p-10"
                     style={{
                         background: "rgba(255,255,255,0.93)",
                         backdropFilter: "blur(20px)",
@@ -376,15 +380,8 @@ export const ContactForm = () => {
                                                                     s.label
                                                                 )
                                                             }
-                                                            className="w-full px-4 py-3.5 text-left text-[15px] text-gray-800 hover:bg-gray-50 transition-colors flex items-center gap-3"
+                                                            className="w-full px-4 py-3.5 text-left text-[15px] text-gray-800 hover:bg-gray-50 transition-colors"
                                                         >
-                                                            <span
-                                                                className="w-2.5 h-2.5 rounded-full shrink-0"
-                                                                style={{
-                                                                    background:
-                                                                        s.color,
-                                                                }}
-                                                            />
                                                             {s.label}
                                                         </button>
                                                     )

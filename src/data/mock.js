@@ -1,23 +1,13 @@
-import gallery1 from '../assets/social_images/s1.jpg';
-import gallery2 from '../assets/social_images/s2.jpg';
-import gallery3 from '../assets/social_images/s3.JPG';
-import gallery4 from '../assets/social_images/s4.jpg';
-import gallery5 from '../assets/social_images/s5.JPG';
-import gallery6 from '../assets/social_images/s6.JPG';
-import gallery7 from '../assets/social_images/s7.jpg';
-import gallery8 from '../assets/social_images/s8.jpg';
-import gallery9 from '../assets/social_images/s9.jpg';
-
 export const galleryImages = [
-    { id: 1, url: gallery1, title: 'Young Bakers' },
-    { id: 2, url: gallery2, title: 'Healthy Salads' },
-    { id: 3, url: gallery3, title: 'Pasta Making' },
-    { id: 4, url: gallery4, title: 'Bread Workshop' },
-    { id: 5, url: gallery5, title: 'Team Cooking' },
-    { id: 6, url: gallery6, title: 'Chef Hat Graduation' },
-    { id: 7, url: gallery7, title: 'Baking Fun' },
-    { id: 8, url: gallery8, title: 'Culinary Masterclass' },
-    { id: 9, url: gallery9, title: 'Delicious Treats' }
+    { id: 1, url: 'https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798205/6M7A0145_ck8lhg.jpg', title: 'Young Bakers' },
+    { id: 2, url: 'https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798205/DSC04995_myfbmq.jpg', title: 'Healthy Salads' },
+    { id: 3, url: 'https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798206/ADI09926_2_miywgy.jpg', title: 'Pasta Making' },
+    { id: 4, url: 'https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798206/DSC05099_1_z2wizb.jpg', title: 'Bread Workshop' },
+    { id: 5, url: 'https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798206/ADI09599_1_tvwxfw.jpg', title: 'Team Cooking' },
+    { id: 6, url: 'https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798207/DSC07638_uwuoa0.jpg', title: 'Chef Hat Graduation' },
+    { id: 7, url: 'https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798208/CL4A3464_1_cqsxwl.jpg', title: 'Baking Fun' },
+    { id: 8, url: 'https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798432/NAG05820_1__11zon_ja8sbx.jpg', title: 'Delicious Treats' },
+    { id: 9, url: 'https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798463/NAG05830_1__11zon_tkmxiv.jpg', title: 'Community Cooking' }
 ];
 
 export const contactInfo = {

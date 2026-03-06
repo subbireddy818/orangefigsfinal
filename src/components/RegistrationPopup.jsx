@@ -25,7 +25,7 @@ export const RegistrationPopup = () => {
     // Preload popup image for faster display
     useEffect(() => {
         const img = new Image();
-        img.src = "/ADI09926%20(1).jpg";
+        img.src = "https://res.cloudinary.com/dg5qkp09h/image/upload/v1772797665/DSC07638_l4fttd.jpg";
     }, []);
 
     useEffect(() => {
@@ -89,7 +89,7 @@ export const RegistrationPopup = () => {
                 {/* Left side: Image */}
                 <div className="relative w-full md:w-1/2 h-40 md:h-full bg-gray-100 flex-shrink-0">
                     <img
-                        src="/ADI09926%20(1).jpg"
+                        src="https://res.cloudinary.com/dg5qkp09h/image/upload/v1772797665/DSC07638_l4fttd.jpg"
                         alt="Cooking"
                         className="w-full h-full object-cover"
                         loading="eager"
@@ -112,8 +112,7 @@ export const RegistrationPopup = () => {
                     <div className="space-y-5 md:space-y-6 max-w-[320px] mx-auto">
                         <div className="flex flex-col items-center gap-2 md:gap-4">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 leading-tight">
-                                You've Got A <br />
-                                <span className="gradient-text">Mystery Discount</span>
+                                Get latest updates
                             </h2>
                         </div>
 
@@ -153,10 +152,6 @@ export const RegistrationPopup = () => {
                                 {isSubmitting ? "Sending..." : "Register"}
                             </Button>
                         </form>
-
-                        <p className="text-sm text-gray-400 font-medium">
-                            Register to reveal your surprise discount!
-                        </p>
                     </div>
                 </div>
             </DialogContent>
