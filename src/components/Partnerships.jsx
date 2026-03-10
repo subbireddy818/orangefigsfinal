@@ -33,18 +33,18 @@ export const Partnerships = () => {
                 </div>
 
                 {/* Static 5 logos - no animation */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 max-w-5xl mx-auto">
+                <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 max-w-5xl mx-auto">
                     {partners.map((partner, index) => (
                         <div
                             key={index}
-                            className="relative h-24 md:h-28 lg:h-32 rounded-xl overflow-hidden 
+                            className="relative h-24 md:h-28 lg:h-32 w-40 md:w-44 rounded-xl overflow-hidden 
                               bg-white shadow-sm 
                               flex items-center justify-center p-4"
                         >
                             <img
                                 src={partner.logo}
                                 alt={partner.name}
-                                className="max-w-full max-h-full object-contain"
+                                className="max-w-full max-h-full object-contain object-center"
                             />
                         </div>
                     ))}

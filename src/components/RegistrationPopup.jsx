@@ -112,7 +112,7 @@ export const RegistrationPopup = () => {
                     <div className="space-y-5 md:space-y-6 max-w-[320px] mx-auto">
                         <div className="flex flex-col items-center gap-2 md:gap-4">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 leading-tight">
-                                Get latest updates
+                                Get latest updates!
                             </h2>
                         </div>
 
