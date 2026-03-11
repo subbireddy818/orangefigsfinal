@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { galleryImages } from "../data/mock";
+import { galleryImages, cloudinaryOpt } from "../data/mock";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay, Navigation } from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -106,8 +106,9 @@ export const Gallery = () => {
                                         }}
                                     >
                                         <img
-                                            src={image.url}
+                                            src={cloudinaryOpt(image.url, 700)}
                                             alt={image.title}
+                                            loading="lazy"
                                             className="w-full h-full object-cover"
                                         />
                                     </div>

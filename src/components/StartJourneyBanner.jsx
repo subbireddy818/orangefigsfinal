@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { cloudinaryOpt } from "../data/mock";
 
 const css = `
   @keyframes sj-left  { from{opacity:0;transform:translateX(-40px)} to{opacity:1;transform:translateX(0)} }
@@ -168,8 +169,9 @@ export default function StartJourneyBanner() {
                                 }}
                             >
                                 <img
-                                    src="https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798913/_VPC7498_sxbvy9.jpg"
+                                    src={cloudinaryOpt("https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798913/_VPC7498_sxbvy9.jpg", 600)}
                                     alt="Young chef cooking"
+                                    loading="lazy"
                                     className="w-full h-full object-cover object-[center_top] rounded-[inherit]"
                                     onError={(e) => {
                                         e.target.style.display = "none";

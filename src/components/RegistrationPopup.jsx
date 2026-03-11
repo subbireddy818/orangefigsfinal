@@ -9,6 +9,8 @@ import { Input } from "./ui/input";
 import { toast } from 'sonner';
 import { X } from 'lucide-react';
 
+import { cloudinaryOpt } from '../data/mock';
+
 // Email recipients for registration popup
 const PRIMARY_EMAIL = "go9346089096@gmail.com";
 const CC_EMAILS = "Chakradhar@theculinarylounge.com,gopi@theculinarylounge.com,hello@theculinarylounge.com";
@@ -22,11 +24,12 @@ export const RegistrationPopup = () => {
         email: '',
     });
 
-    // Preload popup image for faster display
+    // Popup image: high-res for clarity (w=1200), preload for crisp display
+    const popupImg = cloudinaryOpt("https://res.cloudinary.com/dg5qkp09h/image/upload/v1772797665/DSC07638_l4fttd.jpg", 1200);
     useEffect(() => {
         const img = new Image();
-        img.src = "https://res.cloudinary.com/dg5qkp09h/image/upload/v1772797665/DSC07638_l4fttd.jpg";
-    }, []);
+        img.src = popupImg;
+    }, [popupImg]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -89,7 +92,7 @@ export const RegistrationPopup = () => {
                 {/* Left side: Image */}
                 <div className="relative w-full md:w-1/2 h-40 md:h-full bg-gray-100 flex-shrink-0">
                     <img
-                        src="https://res.cloudinary.com/dg5qkp09h/image/upload/v1772797665/DSC07638_l4fttd.jpg"
+                        src={popupImg}
                         alt="Cooking"
                         className="w-full h-full object-cover"
                         loading="eager"

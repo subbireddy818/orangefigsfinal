@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const HERO_VIDEO_DESKTOP =
   "https://res.cloudinary.com/dg5qkp09h/video/upload/v1772695162/horizontal_wlxpmg.mp4";
@@ -141,27 +141,29 @@ const styles = `
 `;
 
 function Hero() {
+  const [isMobile, setIsMobile] = useState(typeof window !== "undefined" ? window.innerWidth < 768 : false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const handler = () => setIsMobile(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   return (
     <>
       <style>{styles}</style>
       <section className="hero-outer">
         <div className="hero-video">
           <video
-            className="hero-video-desktop"
-            src={HERO_VIDEO_DESKTOP}
+            className={isMobile ? "hero-video-mobile" : "hero-video-desktop"}
+            style={{ display: "block" }}
+            src={isMobile ? HERO_VIDEO_MOBILE : HERO_VIDEO_DESKTOP}
             autoPlay
             muted
             loop
             playsInline
-            title="Orange Figs hero video"
-          />
-          <video
-            className="hero-video-mobile"
-            src={HERO_VIDEO_MOBILE}
-            autoPlay
-            muted
-            loop
-            playsInline
+            preload="auto"
             title="Orange Figs hero video"
           />
         </div>

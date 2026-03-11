@@ -51,7 +51,7 @@ export const Header = () => {
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     >
                         <div className="relative -my-10">
-                            <img src={logo} alt="Logo" className="w-28 h-28 lg:w-40 lg:h-40 object-contain relative z-10" />
+                            <img src={logo} alt="Logo" loading="eager" fetchPriority="high" className="w-28 h-28 lg:w-40 lg:h-40 object-contain relative z-10" />
                         </div>
                     </div>
 

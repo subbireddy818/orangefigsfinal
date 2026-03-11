@@ -164,7 +164,7 @@ export default function OrangeFigsLoader({ onDone }) {
       `}</style>
 
       <div className="ldr-root">
-        <img className="ldr-logo" src={LOGO} alt="Orange Figs" />
+        <img className="ldr-logo" src={LOGO} alt="Orange Figs" loading="eager" fetchPriority="high" />
 
         <div className="ldr-chars">
           {chars.map(({ ch, type, delay }, i) => (

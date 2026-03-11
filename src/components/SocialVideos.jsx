@@ -16,8 +16,23 @@ const socialVideos = [
 ];
 
 const VideoCard = ({ video, index }) => {
+    const [isInView, setIsInView] = useState(false);
+    const cardRef = useRef(null);
+
+    useEffect(() => {
+        const el = cardRef.current;
+        if (!el) return;
+        const obs = new IntersectionObserver(
+            ([e]) => { if (e.isIntersecting) setIsInView(true); },
+            { rootMargin: '100px', threshold: 0.1 }
+        );
+        obs.observe(el);
+        return () => obs.disconnect();
+    }, []);
+
     return (
         <motion.div
+            ref={cardRef}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -27,16 +42,18 @@ const VideoCard = ({ video, index }) => {
                 boxShadow: '0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10)'
             }}
         >
-            {/* Auto-playing looped video */}
+            {/* Lazy-load video only when in view */}
+            {isInView && (
             <video
                 src={video.src}
                 autoPlay
                 muted
                 loop
                 playsInline
-                preload="auto"
+                preload="metadata"
                 className="w-full h-full object-cover"
             />
+            )}
 
             {/* Premium top fade */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50 pointer-events-none" />

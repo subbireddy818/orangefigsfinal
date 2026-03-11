@@ -60,7 +60,7 @@ function ServiceCard({ svc, index, isExpanded, onToggle, isMobile }) {
     }}>
       {/* Image */}
       <div style={{ position: "relative", height: isMobile ? 150 : 200, overflow: "hidden", flexShrink: 0 }}>
-        <img src={svc.img} alt={svc.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        <img src={svc.img} alt={svc.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.22) 100%)" }} />
         <div style={{
           position: "absolute", top: isMobile ? 8 : 12, left: isMobile ? 8 : 12,

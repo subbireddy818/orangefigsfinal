@@ -44,6 +44,7 @@ export const Partnerships = () => {
                             <img
                                 src={partner.logo}
                                 alt={partner.name}
+                                loading="lazy"
                                 className="max-w-full max-h-full object-contain object-center"
                             />
                         </div>

@@ -1,3 +1,7 @@
+// Optimize Cloudinary URLs for faster loading (smaller size, auto format/quality)
+export const cloudinaryOpt = (url, w = 800) =>
+  url.replace('/image/upload/', `/image/upload/f_auto,q_auto,w_${w}/`);
+
 export const galleryImages = [
     { id: 1, url: 'https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798205/6M7A0145_ck8lhg.jpg', title: 'Young Bakers' },
     { id: 2, url: 'https://res.cloudinary.com/dg5qkp09h/image/upload/v1772798205/DSC04995_myfbmq.jpg', title: 'Healthy Salads' },

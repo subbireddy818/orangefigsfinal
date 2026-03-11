@@ -56,7 +56,7 @@ export const Footer = () => {
                     {/* Brand */}
                     <div className="lg:col-span-5 space-y-5">
                         <div className="flex items-center gap-4">
-                            <img src={logo} alt="Orange Figs" className="w-24 h-24 object-contain" />
+                            <img src={logo} alt="Orange Figs" loading="lazy" className="w-24 h-24 object-contain" />
                         </div>
 
                         <p className="text-gray-500 text-sm leading-relaxed max-w-sm font-medium">
